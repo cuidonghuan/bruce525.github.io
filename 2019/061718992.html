@@ -1,0 +1,1651 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="centos7离线安装redis集群, Hexo">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>centos7离线安装redis集群 | Hexo</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 4.2.1"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Hexo</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Hexo</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">centos7离线安装redis集群</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        height: calc(100vh - 250px);
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    .toc-fixed .toc-link::before{
+        position: fixed!important;/*当toc的位置改为fixed时，.toc-link::before也要改为fixed*/
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E7%B3%BB%E7%BB%9F%E8%BF%90%E7%BB%B4/">
+                                <span class="chip bg-color">系统运维</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E7%B3%BB%E7%BB%9F%E8%BF%90%E7%BB%B4/" class="post-category">
+                                系统运维
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2019-06-17
+                </div>
+                
+
+                
+
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h3 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h3><p>需要准备gcc，redis，ruby，zlib，rubygems，openssl，redis-4.1.0.gem等相关依赖。</p>
+<p><code>说明</code>：redis5.0版本以上，可以使用官方自带的集群构建方法，只需要安装gcc，redis即可，<code>查看标*章节即可</code>。较低版本需要ruby构建redis集群，除gcc，redis之外，还需要安装ruby，zlib，rubygems，openssl，redis.gem等。</p>
+<a id="more"></a>
+
+
+
+<h4 id="检查gcc环境"><a href="#检查gcc环境" class="headerlink" title="检查gcc环境"></a>检查gcc环境</h4><p>输入命令<code>gcc -v</code>，如果显示下面内容，说明gcc已经安装。</p>
+<pre class="line-numbers language-shell"><code class="language-shell">[root@localhost opt]# gcc -v
+使用内建 specs。
+COLLECT_GCC=gcc
+COLLECT_LTO_WRAPPER=/usr/libexec/gcc/x86_64-redhat-linux/4.8.5/lto-wrapper
+目标：x86_64-redhat-linux
+配置为：此处省略部分内容...
+gcc 版本 4.8.5 20150623 (Red Hat 4.8.5-16) (GCC)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="手动安装gcc环境"><a href="#手动安装gcc环境" class="headerlink" title="手动安装gcc环境"></a>手动安装gcc环境</h4><p>如果未显示上述内容，则需要下载相关依赖，进行手动安装。下列为相关依赖列表：</p>
+<pre class="line-numbers language-shell"><code class="language-shell">mpfr-3.1.1-4.el7.x86_64.rpm
+libmpc-1.0.1-3.el7.x86_64.rpm
+kernel-headers-3.10.0-123.el7.x86_64.rpm
+glibc-headers-2.17-55.el7.x86_64.rpm
+glibc-devel-2.17-55.el7.x86_64.rpm
+cpp-4.8.2-16.el7.x86_64.rpm
+gcc-4.8.2-16.el7.x86_64.rpm<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>注：这里提供一个rmp下载地址：<a href="http://rpm.pbone.net/index.php3" target="_blank" rel="noopener">传送门</a>，复制上面的rpm包名，直接搜索下载。</p>
+<p>或者直接下载：<a href="http://cuidonghuan.gitee.io/blog-image/file/gcc4.8.2/mpfr-3.1.1-4.el7.x86_64.rpm" target="_blank" rel="noopener">mpfr</a>,  <a href="http://cuidonghuan.gitee.io/blog-image/file/gcc4.8.2/libmpc-1.0.1-3.el7.x86_64.rpm" target="_blank" rel="noopener">libmpc</a>,  <a href="http://cuidonghuan.gitee.io/blog-image/file/gcc4.8.2/kernel-headers-3.10.0-123.el7.x86_64.rpm" target="_blank" rel="noopener">kernel-headers</a>,  <a href="http://cuidonghuan.gitee.io/blog-image/file/gcc4.8.2/glibc-headers-2.17-55.el7.x86_64.rpm" target="_blank" rel="noopener">glibc-headers</a>,  <a href="http://cuidonghuan.gitee.io/blog-image/file/gcc4.8.2/glibc-devel-2.17-55.el7.x86_64.rpm" target="_blank" rel="noopener">glibc-devel</a>,  <a href="http://cuidonghuan.gitee.io/blog-image/file/gcc4.8.2/cpp-4.8.2-16.el7.x86_64.rpm" target="_blank" rel="noopener">cpp</a>,  <a href="http://cuidonghuan.gitee.io/blog-image/file/gcc4.8.2/gcc-4.8.2-16.el7.x86_64.rpm" target="_blank" rel="noopener">gcc</a></p>
+<p>将下载好的rmp包上传到服务器<code>/opt/redis-cluster/package/gcc4.8.2[路径可自定义]</code>路径下，执行统一安装命令<code>rpm -Uvh *.rpm --nodeps --force</code>进行安装。</p>
+<pre class="line-numbers language-shell"><code class="language-shell">[root@localhost gcc4.8.2]# rpm -Uvh *.rpm --nodeps --force<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>使用<code>gcc -v</code>命令验证安装是否成功。</p>
+<h3 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h3><p>redis5.0以上，只需要下载redis即可。5.0以下版本需要下载ruby等依赖文件。</p>
+<h4 id="下载依赖文件"><a href="#下载依赖文件" class="headerlink" title="下载依赖文件"></a>下载依赖文件</h4><p>安装前需要下载<code>redis</code>，<code>ruby</code>，<code>zlib</code>，<code>rubygems</code>，<code>openssl</code>，<code>redis-4.1.0.gem</code>等相关依赖。</p>
+<ul>
+<li><p>redis5.0.5下载：<a href="https://redis.io/download" target="_blank">传送门</a></p>
+</li>
+<li><p>ruby2.5.5下载：<a href="http://www.ruby-lang.org/en/downloads/" target="_blank">传送门</a></p>
+</li>
+<li><p>zlib1.2.11下载：<a href="http://www.zlib.net" target="_blank">传送门</a></p>
+</li>
+<li><p>rubygems3.0.3下载：<a href="https://rubygems.org/pages/download" target="_blank">传送门</a></p>
+</li>
+<li><p>openssl1.1.0i下载：<a href="https://oomake.com/download/openssl" target="_blank">传送门</a></p>
+</li>
+<li><p>redis-rubygems4.1.0下载：<a href="https://rubygems.org/gems/redis/" target="_blank">传送门</a></p>
+</li>
+</ul>
+<p>直接下载方式：<a href="http://cuidonghuan.gitee.io/blog-image/file/redis-cluster/redis5.0.5/redis-5.0.5.tar.gz" target="_blank" rel="noopener">redis5.0.5</a>,  <a href="http://cuidonghuan.gitee.io/blog-image/file/redis-cluster/ruby2.5.5/ruby-2.5.5.tar.gz" target="_blank" rel="noopener">ruby2.5.5</a>,  <a href="http://cuidonghuan.gitee.io/blog-image/file/redis-cluster/zlib1.2.11/zlib-1.2.11.tar.gz" target="_blank" rel="noopener">zlib1.2.11</a>,  <a href="http://cuidonghuan.gitee.io/blog-image/file/redis-cluster/rubygems3.0.4/rubygems-3.0.4.tgz" target="_blank" rel="noopener">rubygems3.0.3</a>,  <a href="http://cuidonghuan.gitee.io/blog-image/file/redis-cluster/openssl1.1.0i/openssl-1.1.0i.tar.gz" target="_blank" rel="noopener">openssl1.1.0i</a>,  <a href="http://cuidonghuan.gitee.io/blog-image/file/redis-cluster/rubygems-redis4.1.0/redis-4.1.0.gem" target="_blank" rel="noopener">redis-rubygems4.1.0</a></p>
+<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p>下载好相关依赖文件后，利用<code>xftp</code>工具将依赖文件上传到<code>/opt/redis-cluster/package[路径可自定义]</code>，下面开始安装各个依赖。</p>
+<h5 id="安装ruby2-5-5"><a href="#安装ruby2-5-5" class="headerlink" title="安装ruby2.5.5"></a>安装ruby2.5.5</h5><p>解压ruby：<code>tar -zxvf ruby-2.5.5.tar.gz</code></p>
+<pre class="line-numbers language-shell"><code class="language-shell">[root@localhost package]# cd /opt/redis-cluster/package
+[root@localhost package]# tar -zxvf ruby-2.5.5.tar.gz       # 解压<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>编译安装ruby，其中<code>./configure --prefix=/usr/local/ruby</code>命令中，<code>--prefix</code>参数将ruby安装到指定目录，也可以自定义路径。</p>
+<pre class="line-numbers language-shell"><code class="language-shell">[root@localhost ruby-2.5.5]# cd /opt/redis-cluster/package/ruby-2.5.5 # 进入到ruby源码文件夹
+[root@localhost ruby-2.5.5]# ./configure --prefix=/usr/local/ruby
+[root@localhost ruby-2.5.5]# make && make install          # 编译安装<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>配置ruby环境变量：</p>
+<p>编辑<code>/etc/profile</code>配置文件，在PATH中添加ruby的bin目录路径。执行<code>source /etc/profile</code>命令使配置立即生效。</p>
+<p><img src="http://cuidonghuan.gitee.io/blog-image/blog/201906/ruby%E5%AE%89%E8%A3%85%E6%88%AA%E5%9B%BE.png" alt="ruby安装截图.png"></p>
+<pre class="line-numbers language-shell"><code class="language-shell">[root@localhost ruby]# vim /etc/profile           # 编辑profile配置文件
+[root@localhost ruby]# source /etc/profile        # 使配置文件立即生效
+[root@localhost ruby]# echo $PATH                 # 输出PATH信息
+/usr/local/ruby/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/root/bin
+[root@localhost ruby]# ruby -v                    # 查看ruby版本信息
+ruby 2.5.5p157 (2019-03-15 revision 67260) [x86_64-linux]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h5 id="安装zlib1-2-11"><a href="#安装zlib1-2-11" class="headerlink" title="安装zlib1.2.11"></a>安装zlib1.2.11</h5><p>进入<code>/opt/redis-cluster/package/</code>文件夹，解压并编译安装zlib。</p>
+<pre class="line-numbers language-shell"><code class="language-shell">[root@localhost package]# cd /opt/redis-cluster/package/            # 进入zlib文件夹
+[root@localhost package]# tar -zxvf zlib-1.2.11.tar.gz              # 解压zlib文件
+[root@localhost package]# cd zlib-1.2.11/
+[root@localhost zlib-1.2.11]# ./configure --prefix=/usr/local/zlib
+[root@localhost zlib-1.2.11]# make && make install                  # 编译安装zlib<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h5 id="安装rubygems3-0-3"><a href="#安装rubygems3-0-3" class="headerlink" title="安装rubygems3.0.3"></a>安装rubygems3.0.3</h5><p>RubyGems 是 Ruby 的一个包管理器，它提供一个分发 Ruby 程序和库的标准格式，还提供一个管理程序包安装的工具。</p>
+<pre class="line-numbers language-shell"><code class="language-shell">[root@localhost package]# cd /opt/redis-cluster/package/
+[root@localhost package]# tar -zxvf rubygems-3.0.4.tgz
+[root@localhost package]# cd rubygems-3.0.4/
+[root@localhost rubygems-3.0.4]# ruby setup.rb<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>安装过程中，可能报错：</p>
+<pre class="line-numbers language-shell"><code class="language-shell">[root@localhost rubygems-3.0.4]# ruby setup.rb
+Bundler 1.17.3 installed
+RubyGems 3.0.4 installed
+Traceback (most recent call last):
+    14: from setup.rb:41:in `<main>'
+    13: from /opt/redis-cluster/package/rubygems-3.0.4/lib/rubygems/gem_runner.rb:59:in `run'
+    12: from /opt/redis-cluster/package/rubygems-3.0.4/lib/rubygems/command_manager.rb:148:in `run'
+    11: from /opt/redis-cluster/package/rubygems-3.0.4/lib/rubygems/command_manager.rb:184:in `process_args'
+    10: from /opt/redis-cluster/package/rubygems-3.0.4/lib/rubygems/command.rb:321:in `invoke_with_build_args'
+     9: from /opt/redis-cluster/package/rubygems-3.0.4/lib/rubygems/commands/setup_command.rb:176:in `execute'
+     8: from /opt/redis-cluster/package/rubygems-3.0.4/lib/rubygems/commands/setup_command.rb:617:in `regenerate_binstubs'
+     7: from /opt/redis-cluster/package/rubygems-3.0.4/lib/rubygems/core_ext/kernel_require.rb:54:in `require'
+     6: from /opt/redis-cluster/package/rubygems-3.0.4/lib/rubygems/core_ext/kernel_require.rb:54:in `require'
+     5: from /opt/redis-cluster/package/rubygems-3.0.4/lib/rubygems/commands/pristine_command.rb:3:in `<top (required)>'
+     4: from /opt/redis-cluster/package/rubygems-3.0.4/lib/rubygems/core_ext/kernel_require.rb:54:in `require'
+     3: from /opt/redis-cluster/package/rubygems-3.0.4/lib/rubygems/core_ext/kernel_require.rb:54:in `require'
+     2: from /opt/redis-cluster/package/rubygems-3.0.4/lib/rubygems/package.rb:47:in `<top (required)>'
+     1: from /opt/redis-cluster/package/rubygems-3.0.4/lib/rubygems/core_ext/kernel_require.rb:54:in `require'
+/opt/redis-cluster/package/rubygems-3.0.4/lib/rubygems/core_ext/kernel_require.rb:54:in `require': cannot load such file -- zlib (LoadError)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>可能是ruby在编译时，未编译zlib依赖，可重新编译zlib模块：</p>
+<p>cd /opt/redis-cluster/package/ruby-2.5.5/ext/zlib，进入到ruby/zlib模块路径。编译zlib过程中，需要修改Makefile文件：</p>
+<pre class="line-numbers language-shell"><code class="language-shell">280行：#zlib.o: $(top_srcdir)/include/ruby.h 注释掉本行，替换为下一行的内容
+修改为：zlib.o: ../../include/ruby.h<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-shell"><code class="language-shell">[root@localhost zlib]# pwd
+/opt/redis-cluster/package/ruby-2.5.5/ext/zlib
+[root@localhost zlib]# ruby setup.rb                 # 安装zlib依赖，可能会报错
+make: *** No rule to make target `/include/ruby.h', needed by `zlib.o'.  Stop.   # 报错，提示找不到zlib.o
+[root@localhost zlib]# vim Makefile                  # 需要修改zlib文件路径，按照下图进行修改
+[root@localhost zlib]# make                          # 修改完成后，重新编译安装
+compiling zlib.c
+linking shared-object zlib.so
+[root@localhost zlib]# make install
+/usr/bin/install -c -m 0755 zlib.so /usr/local/ruby/lib/ruby/site_ruby/2.5.0/x86_64-linux<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><img src="D:%5Cblog%5Chexo%5Csource_posts%5Ccentos7%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85redis%E9%9B%86%E7%BE%A4.assets%5C1560994422642.png" alt="安装zlib过程中修改Makefile文件内容">解决完缺少zlib的问题后，重新安装rubygems。</p>
+<pre class="line-numbers language-shell"><code class="language-shell">[root@localhost package]# cd /opt/redis-cluster/package/
+[root@localhost package]# tar -zxvf rubygems-3.0.4.tgz    # 解压rubygems压缩包
+[root@localhost package]# cd rubygems-3.0.4/
+[root@localhost rubygems-3.0.4]# ruby setup.rb            # 安装rubygems
+[root@localhost rubygems-3.0.4]# 
+[root@localhost rubygems-3.0.4]# gem -v                   # 查看rubygems版本号
+3.0.4<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>安装完成后，配置rubygems环境变量：</p>
+<p>rubygems安装完成后，配置rubygems环境变量。编辑vim /etc/profile文件，在文件当中PATH当中加入安装rubygems的bin目录路径，路径为安装目录bin文件夹/root/public/rubygems-3.0.3/bin/ 【这个路径就是你解压出rubygems的路径】 然后保存，执行命令：source /etc/profile让配置立即生效，然后echo $PATH可以查看变量已被添加。</p>
+<p><img src="http://cuidonghuan.gitee.io/blog-image/blog/201906/rubygems%E5%AE%89%E8%A3%85%E6%88%AA%E5%9B%BE.png" alt="rubygems安装截图.png"></p>
+<h5 id="安装openssl1-1-0i"><a href="#安装openssl1-1-0i" class="headerlink" title="安装openssl1.1.0i"></a>安装openssl1.1.0i</h5><p>解压openssl，编译安装</p>
+<pre class="line-numbers language-shell"><code class="language-shell">[root@localhost package]# tar -zxvf openssl-1.1.0i.tar.gz   ## 解压openssl
+[root@localhost package]# cd openssl-1.1.0i
+[root@localhost openssl-1.1.0i]# ./config -fPIC --prefix=/usr/local/openssl enable-shared ## 配置openssl
+[root@localhost openssl-1.1.0i]# make && make install  ## 编译安装<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h5 id="安装redis5-0-5"><a href="#安装redis5-0-5" class="headerlink" title="安装redis5.0.5"></a>安装redis5.0.5</h5><p>解压并安装redis：</p>
+<pre class="line-numbers language-shell"><code class="language-shell">[root@localhost package]# cd /opt/redis-cluster/package/
+[root@localhost package]# tar -zxvf redis-5.0.5.tar.gz         # 解压redis文件
+[root@localhost package]# cd /opt/redis-cluster/package/redis-5.0.5/
+[root@localhost redis-5.0.5]# pwd
+/opt/redis-cluster/package/redis-5.0.5
+[root@localhost redis-5.0.5]# make && make install             # 编译安装redis
+[root@localhost redis-5.0.5]# pwd
+/opt/redis-cluster/package/redis-5.0.5
+[root@localhost redis-5.0.5]# redis-server redis.conf          # 测试启动redis-server<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>出现以下信息，表示redis安装成功：</p>
+<pre class="line-numbers language-shell"><code class="language-shell">[root@localhost redis-5.0.5]# pwd
+/opt/redis-cluster/package/redis-5.0.5
+[root@localhost redis-5.0.5]# redis-server redis.conf 
+123671:C 20 Jun 2019 10:10:25.162 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+123671:C 20 Jun 2019 10:10:25.162 # Redis version=5.0.5, bits=64, commit=00000000, modified=0, pid=123671, just started
+123671:C 20 Jun 2019 10:10:25.162 # Configuration loaded
+123671:M 20 Jun 2019 10:10:25.163 * Increased maximum number of open files to 10032 (it was originally set to 1024).
+                _._                                                  
+           _.-``__ ''-._                                             
+      _.-``    `.  `_.  ''-._           Redis 5.0.5 (00000000/0) 64 bit
+  .-`` .-```.  ```\/    _.,_ ''-._                                   
+ (    '      ,       .-`  | `,    )     Running in standalone mode
+ |`-._`-...-` __...-.``-._|'` _.-'|     Port: 6379
+ |    `-._   `._    /     _.-'    |     PID: 123671
+  `-._    `-._  `-./  _.-'    _.-'                                   
+ |`-._`-._    `-.__.-'    _.-'_.-'|                                  
+ |    `-._`-._        _.-'_.-'    |           http://redis.io        
+  `-._    `-._`-.__.-'_.-'    _.-'                                   
+ |`-._`-._    `-.__.-'    _.-'_.-'|                                  
+ |    `-._`-._        _.-'_.-'    |                                  
+  `-._    `-._`-.__.-'_.-'    _.-'                                   
+      `-._    `-.__.-'    _.-'                                       
+          `-._        _.-'                                           
+              `-.__.-'                                               
+
+123671:M 20 Jun 2019 10:10:25.165 # WARNING: The TCP backlog setting of 511 cannot be enforced because /proc/sys/net/core/somaxconn is set to the lower value of 128.
+123671:M 20 Jun 2019 10:10:25.165 # Server initialized
+123671:M 20 Jun 2019 10:10:25.166 # WARNING overcommit_memory is set to 0! Background save may fail under low memory condition. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
+123671:M 20 Jun 2019 10:10:25.166 # WARNING you have Transparent Huge Pages (THP) support enabled in your kernel. This will create latency and memory usage issues with Redis. To fix this issue run the command 'echo never > /sys/kernel/mm/transparent_hugepage/enabled' as root, and add it to your /etc/rc.local in order to retain the setting after a reboot. Redis must be restarted after THP is disabled.
+123671:M 20 Jun 2019 10:10:25.166 * DB loaded from disk: 0.000 seconds
+123671:M 20 Jun 2019 10:10:25.166 * Ready to accept connections<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h5 id="安装redis-rubygems4-1-0"><a href="#安装redis-rubygems4-1-0" class="headerlink" title="安装redis-rubygems4.1.0"></a>安装redis-rubygems4.1.0</h5><p>安装redis-rubygems时，报错：缺少openssl插件</p>
+<pre class="line-numbers language-shell"><code class="language-shell">[root@localhost package]# gem install redis-4.1.0.gem 
+Traceback (most recent call last):
+    22: from /opt/redis-cluster/package/rubygems-3.0.4/bin/gem:21:in `<main>'
+    21: from /usr/local/ruby/lib/ruby/site_ruby/2.5.0/rubygems/gem_runner.rb:59:in `run'
+    20: from /usr/local/ruby/lib/ruby/site_ruby/2.5.0/rubygems/command_manager.rb:148:in `run'
+    19: from /usr/local/ruby/lib/ruby/site_ruby/2.5.0/rubygems/command_manager.rb:184:in `process_args'
+    18: from /usr/local/ruby/lib/ruby/site_ruby/2.5.0/rubygems/command.rb:321:in `invoke_with_build_args'
+    17: from /usr/local/ruby/lib/ruby/site_ruby/2.5.0/rubygems/commands/install_command.rb:165:in `execute'
+    16: from /usr/local/ruby/lib/ruby/site_ruby/2.5.0/rubygems/commands/install_command.rb:258:in `install_gems'
+    15: from /usr/local/ruby/lib/ruby/site_ruby/2.5.0/rubygems/commands/install_command.rb:258:in `each'
+    14: from /usr/local/ruby/lib/ruby/site_ruby/2.5.0/rubygems/commands/install_command.rb:264:in `block in install_gems'
+    13: from /usr/local/ruby/lib/ruby/site_ruby/2.5.0/rubygems/commands/install_command.rb:201:in `install_gem'
+    12: from /usr/local/ruby/lib/ruby/site_ruby/2.5.0/rubygems/dependency_installer.rb:478:in `resolve_dependencies'
+    11: from /usr/local/ruby/lib/ruby/site_ruby/2.5.0/rubygems/resolver/installer_set.rb:56:in `add_always_install'
+    10: from /usr/local/ruby/lib/ruby/site_ruby/2.5.0/rubygems/resolver/installer_set.rb:155:in `find_all'
+     9: from /usr/local/ruby/lib/ruby/site_ruby/2.5.0/rubygems/resolver/best_set.rb:29:in `find_all'
+     8: from /usr/local/ruby/lib/ruby/site_ruby/2.5.0/rubygems/resolver/best_set.rb:23:in `pick_sets'
+     7: from /usr/local/ruby/lib/ruby/site_ruby/2.5.0/rubygems/source_list.rb:98:in `each_source'
+     6: from /usr/local/ruby/lib/ruby/site_ruby/2.5.0/rubygems/source_list.rb:98:in `each'
+     5: from /usr/local/ruby/lib/ruby/site_ruby/2.5.0/rubygems/resolver/best_set.rb:24:in `block in pick_sets'
+     4: from /usr/local/ruby/lib/ruby/site_ruby/2.5.0/rubygems/source.rb:87:in `dependency_resolver_set'
+     3: from /usr/local/ruby/lib/ruby/site_ruby/2.5.0/rubygems/remote_fetcher.rb:253:in `fetch_path'
+     2: from /usr/local/ruby/lib/ruby/site_ruby/2.5.0/rubygems/remote_fetcher.rb:278:in `rescue in fetch_path'
+     1: from /usr/local/ruby/lib/ruby/site_ruby/2.5.0/rubygems/core_ext/kernel_require.rb:54:in `require'
+/usr/local/ruby/lib/ruby/site_ruby/2.5.0/rubygems/core_ext/kernel_require.rb:54:in `require': cannot load such file -- openssl (LoadError)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>需要参考安装zlib依赖，进行重新编译ruby依赖：其中–with-openssl-dir=&lt;dir&gt;参数，填写已安装openssl的地址。编译过程中可能会报错，同样的方法修改Makefile文件中ossl.o文件的路径。</p>
+<pre class="line-numbers language-shell"><code class="language-shell">[root@localhost openssl]# cd /opt/redis-cluster/package/ruby-2.5.5/ext/openssl  # 进入到依赖所在路径
+[root@localhost openssl]# ruby extconf.rb --with-openssl-dir=/usr/local/openssl # 配置
+[root@localhost openssl]# pwd
+/opt/redis-cluster/package/ruby-2.5.5/ext/openssl
+[root@localhost openssl]# make                                                  # 编译
+make: *** 没有规则可以创建“ossl.o”需要的目标“/include/ruby.h”。 停止。                # 编译报错，提示找不到ruby.h
+[root@localhost openssl]# vim Makefile<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>Makefile替换内容：</p>
+<p>把<code>$(top_srcdir)/include/ruby.h</code>统一修改为<code>../../include/ruby.h</code></p>
+<p>把<code>$(top_srcdir)</code>统一替换成<code>../..</code>，测试通过</p>
+<p>例如：</p>
+<pre class="line-numbers language-shell"><code class="language-shell">325行：#ossl.o: $(top_srcdir)/include/ruby.h # 修改ossl.o文件的路径，使用下一行进行替换
+替换为：ossl.o: ../../include/ruby.h<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-shell"><code class="language-shell">363行：#ossl_asn1.o: $(top_srcdir)/include/ruby.h # 修改ruby.h路径，替换为下一行
+替换为：ossl_asn1.o: ../../include/ruby.h<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-shell"><code class="language-shell">401行：#ossl_bio.o: $(top_srcdir)/include/ruby.h # 修改ruby.h路径，替换为下行内容
+替换为：ossl_bio.o: ../../include/ruby.h<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>修改之后的Makefile文件：<a href="http://cuidonghuan.gitee.io/blog-image/file/redis-cluster/ruby2.5.5/Makefile" target="_blank" rel="noopener">Makefile下载</a></p>
+<p>Makefile文件完整路径：<code>/opt/redis-cluster/package/ruby-2.5.5/ext/openssl/Makefile</code></p>
+<p>修改完成之后，重新编译安装。</p>
+<pre class="line-numbers language-shell"><code class="language-shell">[root@localhost openssl]# make && make install<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>安装redis-4.1.0.gem，</p>
+<pre class="line-numbers language-shell"><code class="language-shell">[root@localhost package]# pwd                          # redis-4.1.0.gem所在路径
+/opt/redis-cluster/package
+[root@localhost package]# gem install redis-4.1.0.gem  # 安装redis.gem,显示如下信息，安装成功
+Successfully installed redis-4.1.0
+Parsing documentation for redis-4.1.0
+Installing ri documentation for redis-4.1.0
+Done installing documentation for redis after 1 seconds
+WARNING:  Unable to pull data from 'https://rubygems.org/': no such name (https://rubygems.org/specs.4.8.gz)
+1 gem installed<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>查看是否安装成功：</p>
+<pre class="line-numbers language-shell"><code class="language-shell">[root@localhost package]# gem list redis
+*** LOCAL GEMS ***
+redis (4.1.0)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p><img src="http://cuidonghuan.gitee.io/blog-image/blog/201906/%E5%AE%89%E8%A3%85redis-rubygems4.1.0%E7%BB%93%E6%9E%9C%E6%88%AA%E5%9B%BE.png" alt="安装redis-rubygems4.1.0结果截图.png"></p>
+<h3 id="搭建集群"><a href="#搭建集群" class="headerlink" title="搭建集群"></a>搭建集群</h3><blockquote>
+<p>集群的搭建，主要分为：集群节点的配置，各个节点的启动，集群的创建等步骤。</p>
+</blockquote>
+<h4 id="redis-cluster配置"><a href="#redis-cluster配置" class="headerlink" title="redis-cluster配置"></a>redis-cluster配置</h4><p>搭建集群，首先创建6个集群节点文件夹，</p>
+<pre class="line-numbers language-shell"><code class="language-shell">[root@localhost redis-cluster]# pwd
+/opt/redis-cluster/redis-cluster
+[root@localhost redis-cluster]# mkdir 7000 7001 7002 7003 7004 7005     # 新建6个文件夹
+[root@localhost redis-cluster]# ls
+7000  7001  7002  7003  7004  7005<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>将<code>redis-cli</code>, <code>redis-server</code>, <code>redis-trib.rb</code>分别复制到6个文件夹中。</p>
+<pre class="line-numbers language-shell"><code class="language-shell">[root@localhost redis-cluster]# cp /opt/redis-cluster/package/redis-5.0.5/src/redis-cli /opt/redis-cluster/package/redis-5.0.5/src/redis-server /opt/redis-cluster/package/redis-5.0.5/src/redis-trib.rb /opt/redis-cluster/redis-cluster/7000
+[root@localhost redis-cluster]# cp /opt/redis-cluster/package/redis-5.0.5/src/redis-cli /opt/redis-cluster/package/redis-5.0.5/src/redis-server /opt/redis-cluster/package/redis-5.0.5/src/redis-trib.rb /opt/redis-cluster/redis-cluster/7001
+[root@localhost redis-cluster]# cp /opt/redis-cluster/package/redis-5.0.5/src/redis-cli /opt/redis-cluster/package/redis-5.0.5/src/redis-server /opt/redis-cluster/package/redis-5.0.5/src/redis-trib.rb /opt/redis-cluster/redis-cluster/7002
+[root@localhost redis-cluster]# cp /opt/redis-cluster/package/redis-5.0.5/src/redis-cli /opt/redis-cluster/package/redis-5.0.5/src/redis-server /opt/redis-cluster/package/redis-5.0.5/src/redis-trib.rb /opt/redis-cluster/redis-cluster/7003
+[root@localhost redis-cluster]# cp /opt/redis-cluster/package/redis-5.0.5/src/redis-cli /opt/redis-cluster/package/redis-5.0.5/src/redis-server /opt/redis-cluster/package/redis-5.0.5/src/redis-trib.rb /opt/redis-cluster/redis-cluster/7004
+[root@localhost redis-cluster]# cp /opt/redis-cluster/package/redis-5.0.5/src/redis-cli /opt/redis-cluster/package/redis-5.0.5/src/redis-server /opt/redis-cluster/package/redis-5.0.5/src/redis-trib.rb /opt/redis-cluster/redis-cluster/7005
+
+[root@localhost redis-cluster]# cp /opt/redis-cluster/package/redis-5.0.5/redis.conf /opt/redis-cluster/redis-cluster/7000
+[root@localhost redis-cluster]# cp /opt/redis-cluster/package/redis-5.0.5/redis.conf /opt/redis-cluster/redis-cluster/7001
+[root@localhost redis-cluster]# cp /opt/redis-cluster/package/redis-5.0.5/redis.conf /opt/redis-cluster/redis-cluster/7002
+[root@localhost redis-cluster]# cp /opt/redis-cluster/package/redis-5.0.5/redis.conf /opt/redis-cluster/redis-cluster/7003
+[root@localhost redis-cluster]# cp /opt/redis-cluster/package/redis-5.0.5/redis.conf /opt/redis-cluster/redis-cluster/7004
+[root@localhost redis-cluster]# cp /opt/redis-cluster/package/redis-5.0.5/redis.conf /opt/redis-cluster/redis-cluster/7005<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>修改每个文件夹下面的redis.conf文件：</p>
+<p>7005，redis.conf：</p>
+<pre class="line-numbers language-sh"><code class="language-sh"># 端口7000,7001,7002,7003,7004,7005
+port 7005
+# 默认ip为127.0.0.1 需要改为其他节点机器可访问的ip 否则创建集群时无法访问对应的端口，无法创建集群
+#bind 127.0.0.1
+# redis后台运行
+daemonize yes
+# pidfile文件对应7000…7005
+pidfile /var/run/redis_7005.pid
+# 开启集群  把注释#去掉
+cluster-enabled yes
+# 集群的配置  配置文件首次启动自动生成 7000…7005
+cluster-config-file nodes_7005.conf
+# 请求超时  默认15秒，可自行设置
+cluster-node-timeout 15000
+# aof日志开启  有需要就开启，它会每次写操作都记录一条日志
+appendonly yes<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>其他文件夹下的redis.conf需要修改：port, pidfile, cluster-config-file的值</p>
+<h4 id="启动redis节点"><a href="#启动redis节点" class="headerlink" title="启动redis节点"></a>启动redis节点</h4><p>分别启动redis六个节点：</p>
+<pre class="line-numbers language-shell"><code class="language-shell">[root@localhost 7000]# /opt/redis-cluster/redis-cluster/7000/redis-server /opt/redis-cluster/redis-cluster/7000/redis.conf
+40806:C 20 Jun 2019 11:59:04.316 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+40806:C 20 Jun 2019 11:59:04.316 # Redis version=5.0.5, bits=64, commit=00000000, modified=0, pid=40806, just started
+40806:C 20 Jun 2019 11:59:04.316 # Configuration loaded
+[root@localhost 7005]# /opt/redis-cluster/redis-cluster/7001/redis-server /opt/redis-cluster/redis-cluster/7001/redis.conf
+42208:C 20 Jun 2019 12:02:06.947 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+42208:C 20 Jun 2019 12:02:06.947 # Redis version=5.0.5, bits=64, commit=00000000, modified=0, pid=42208, just started
+42208:C 20 Jun 2019 12:02:06.948 # Configuration loaded
+[root@localhost 7005]# /opt/redis-cluster/redis-cluster/7002/redis-server /opt/redis-cluster/redis-cluster/7002/redis.conf
+42275:C 20 Jun 2019 12:02:17.140 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+42275:C 20 Jun 2019 12:02:17.140 # Redis version=5.0.5, bits=64, commit=00000000, modified=0, pid=42275, just started
+42275:C 20 Jun 2019 12:02:17.140 # Configuration loaded
+[root@localhost 7005]# /opt/redis-cluster/redis-cluster/7003/redis-server /opt/redis-cluster/redis-cluster/7003/redis.conf
+42335:C 20 Jun 2019 12:02:25.485 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+42335:C 20 Jun 2019 12:02:25.485 # Redis version=5.0.5, bits=64, commit=00000000, modified=0, pid=42335, just started
+42335:C 20 Jun 2019 12:02:25.485 # Configuration loaded
+[root@localhost 7005]# /opt/redis-cluster/redis-cluster/7004/redis-server /opt/redis-cluster/redis-cluster/7004/redis.conf
+42387:C 20 Jun 2019 12:02:32.759 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+42387:C 20 Jun 2019 12:02:32.759 # Redis version=5.0.5, bits=64, commit=00000000, modified=0, pid=42387, just started
+42387:C 20 Jun 2019 12:02:32.759 # Configuration loaded
+[root@localhost 7005]# /opt/redis-cluster/redis-cluster/7005/redis-server /opt/redis-cluster/redis-cluster/7005/redis.conf
+42450:C 20 Jun 2019 12:02:40.956 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+42450:C 20 Jun 2019 12:02:40.956 # Redis version=5.0.5, bits=64, commit=00000000, modified=0, pid=42450, just started
+42450:C 20 Jun 2019 12:02:40.956 # Configuration loaded<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>查看启动状态：</p>
+<pre class="line-numbers language-shell"><code class="language-shell">[root@localhost 7005]# lsof -i:7000
+COMMAND     PID USER   FD   TYPE   DEVICE SIZE/OFF NODE NAME
+redis-ser 40807 root    6u  IPv6 13181655      0t0  TCP *:afs3-fileserver (LISTEN)
+redis-ser 40807 root    7u  IPv4 13181656      0t0  TCP *:afs3-fileserver (LISTEN)
+[root@localhost 7005]# lsof -i:7001
+COMMAND     PID USER   FD   TYPE   DEVICE SIZE/OFF NODE NAME
+redis-ser 42209 root    6u  IPv6 13189102      0t0  TCP *:afs3-callback (LISTEN)
+redis-ser 42209 root    7u  IPv4 13189103      0t0  TCP *:afs3-callback (LISTEN)
+[root@localhost 7005]# lsof -i:7002
+COMMAND     PID USER   FD   TYPE   DEVICE SIZE/OFF NODE NAME
+redis-ser 42276 root    6u  IPv6 13191259      0t0  TCP *:afs3-prserver (LISTEN)
+redis-ser 42276 root    7u  IPv4 13191260      0t0  TCP *:afs3-prserver (LISTEN)
+[root@localhost 7005]# lsof -i:7003
+COMMAND     PID USER   FD   TYPE   DEVICE SIZE/OFF NODE NAME
+redis-ser 42336 root    6u  IPv6 13191384      0t0  TCP *:afs3-vlserver (LISTEN)
+redis-ser 42336 root    7u  IPv4 13191385      0t0  TCP *:afs3-vlserver (LISTEN)
+[root@localhost 7005]# lsof -i:7004
+COMMAND     PID USER   FD   TYPE   DEVICE SIZE/OFF NODE NAME
+redis-ser 42388 root    6u  IPv6 13190479      0t0  TCP *:afs3-kaserver (LISTEN)
+redis-ser 42388 root    7u  IPv4 13190480      0t0  TCP *:afs3-kaserver (LISTEN)
+[root@localhost 7005]# lsof -i:7005
+COMMAND     PID USER   FD   TYPE   DEVICE SIZE/OFF NODE NAME
+redis-ser 42451 root    6u  IPv6 13190585      0t0  TCP *:afs3-volser (LISTEN)
+redis-ser 42451 root    7u  IPv4 13190586      0t0  TCP *:afs3-volser (LISTEN)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>6个redis节点都已经成功启动，下一步创建集群。</p>
+<h4 id="创建redis集群"><a href="#创建redis集群" class="headerlink" title="创建redis集群"></a>创建redis集群</h4><p>创建redis-cluster集群命令：<code>/opt/redis-cluster/redis-cluster/7000/redis-trib.rb create --replicas 1 192.168.88.111:7000 192.168.88.111:7001 192.168.88.111:7002 192.168.88.111:7003 192.168.88.111:7004 192.168.88.111:7005</code></p>
+<p>redis集群默认前三个节点是master节点，后三个节点是slave节点。</p>
+<p>提示：<code>Can I set the above configuration? (type &#39;yes&#39; to accept): yes</code>，需要手动输入<code>yes</code>继续。</p>
+<pre class="line-numbers language-shell"><code class="language-shell">[root@localhost 7000]# /opt/redis-cluster/redis-cluster/7000/redis-trib.rb create --replicas 1 192.168.88.111:7000 192.168.88.111:7001 192.168.88.111:7002 192.168.88.111:7003 192.168.88.111:7004 192.168.88.111:7005
+112633:C 20 Jun 2019 14:42:06.657 # Configuration loaded
+>>> Performing hash slots allocation on 6 nodes...
+Master[0] -> Slots 0 - 5460
+Master[1] -> Slots 5461 - 10922
+Master[2] -> Slots 10923 - 16383
+Adding replica 192.168.88.111:7004 to 192.168.88.111:7000
+Adding replica 192.168.88.111:7005 to 192.168.88.111:7001
+Adding replica 192.168.88.111:7003 to 192.168.88.111:7002
+>>> Trying to optimize slaves allocation for anti-affinity
+[WARNING] Some slaves are in the same host as their master
+M: a3e472fe0294569e3fb76110e8657a85ab5a57be 192.168.88.111:7000
+   slots:[0-5460] (5461 slots) master
+M: 9be2be00a17a37c9ad901d7b5eb952857c59410c 192.168.88.111:7001
+   slots:[5461-10922] (5462 slots) master
+M: b2f94e48faafb98f87f894f8782a0543fe21b7b4 192.168.88.111:7002
+   slots:[10923-16383] (5461 slots) master
+S: ac42ce6d37c4bf06447ebf22396235ae199dffeb 192.168.88.111:7003
+   replicates a3e472fe0294569e3fb76110e8657a85ab5a57be
+S: 69d7d189a8bdb5b69c812ebdc09d02ea06eef3be 192.168.88.111:7004
+   replicates 9be2be00a17a37c9ad901d7b5eb952857c59410c
+S: d1acb584b44fad79bca3b2f5925bf0980af0b7cd 192.168.88.111:7005
+   replicates b2f94e48faafb98f87f894f8782a0543fe21b7b4
+Can I set the above configuration? (type 'yes' to accept): yes
+>>> Nodes configuration updated
+>>> Assign a different config epoch to each node
+>>> Sending CLUSTER MEET messages to join the cluster
+Waiting for the cluster to join
+...
+>>> Performing Cluster Check (using node 192.168.88.111:7000)
+M: a3e472fe0294569e3fb76110e8657a85ab5a57be 192.168.88.111:7000
+   slots:[0-5460] (5461 slots) master
+   1 additional replica(s)
+S: ac42ce6d37c4bf06447ebf22396235ae199dffeb 192.168.88.111:7003
+   slots: (0 slots) slave
+   replicates a3e472fe0294569e3fb76110e8657a85ab5a57be
+M: b2f94e48faafb98f87f894f8782a0543fe21b7b4 192.168.88.111:7002
+   slots:[10923-16383] (5461 slots) master
+   1 additional replica(s)
+M: 9be2be00a17a37c9ad901d7b5eb952857c59410c 192.168.88.111:7001
+   slots:[5461-10922] (5462 slots) master
+   1 additional replica(s)
+S: d1acb584b44fad79bca3b2f5925bf0980af0b7cd 192.168.88.111:7005
+   slots: (0 slots) slave
+   replicates b2f94e48faafb98f87f894f8782a0543fe21b7b4
+S: 69d7d189a8bdb5b69c812ebdc09d02ea06eef3be 192.168.88.111:7004
+   slots: (0 slots) slave
+   replicates 9be2be00a17a37c9ad901d7b5eb952857c59410c
+[OK] All nodes agree about slots configuration.
+>>> Check for open slots...
+>>> Check slots coverage...
+[OK] All 16384 slots covered.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>创建redis集群：<code>Temporary failure in name resolution</code>错误</p>
+<pre class="line-numbers language-shell"><code class="language-shell">[root@localhost 7005]# /opt/redis-cluster/redis-cluster/7000/redis-cli --cluster create 192.168.88.111:7000 192.168.88.111:7001 192.168.88.111:7002 192.168.88.111:7003 192.168.88.111:7004 192.168.88.111:7005
+Could not connect to Redis at 192.168.88.111:7000 192.168.88.111:7001: Temporary failure in name resolution<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p><code>Temporary failure in name resolution</code>解决方法：</p>
+<pre class="line-numbers language-shell"><code class="language-shell">[root@localhost 7005]# vim /etc/resolv.conf<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>修改<code>/etc/resolv.conf</code>文件，resolv.conf中添加：</p>
+<pre class="line-numbers language-shell"><code class="language-shell">nameserver 114.114.114.114
+nameserver 8.8.8.8<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>创建集群：<code>Name or service not known</code>错误</p>
+<pre class="line-numbers language-shell"><code class="language-shell">[root@localhost 7005]# /opt/redis-cluster/redis-cluster/7000/redis-cli --cluster create 192.168.88.111:7000 192.168.88.111:7001 192.168.88.111:7002 192.168.88.111:7003 192.168.88.111:7004 192.168.88.111:7005 --cluster-replicas 1
+Could not connect to Redis at 192.168.88.111:7000 192.168.88.111:7001: Name or service not known<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>分别启动六个redis节点，之后创建redis集群，操作提示：</p>
+<pre class="line-numbers language-shell"><code class="language-shell">[root@localhost 7000]# redis-server /opt/redis-cluster/redis-cluster/7001/redis.conf
+78200:C 20 Jun 2019 13:24:32.668 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+78200:C 20 Jun 2019 13:24:32.669 # Redis version=5.0.5, bits=64, commit=00000000, modified=0, pid=78200, just started
+78200:C 20 Jun 2019 13:24:32.669 # Configuration loaded
+[root@localhost 7000]# redis-server /opt/redis-cluster/redis-cluster/7002/redis.conf
+78237:C 20 Jun 2019 13:24:36.984 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+78237:C 20 Jun 2019 13:24:36.984 # Redis version=5.0.5, bits=64, commit=00000000, modified=0, pid=78237, just started
+78237:C 20 Jun 2019 13:24:36.984 # Configuration loaded
+[root@localhost 7000]# redis-server /opt/redis-cluster/redis-cluster/7003/redis.conf
+78261:C 20 Jun 2019 13:24:40.321 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+78261:C 20 Jun 2019 13:24:40.321 # Redis version=5.0.5, bits=64, commit=00000000, modified=0, pid=78261, just started
+78261:C 20 Jun 2019 13:24:40.321 # Configuration loaded
+[root@localhost 7000]# redis-server /opt/redis-cluster/redis-cluster/7004/redis.conf
+78289:C 20 Jun 2019 13:24:44.236 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+78289:C 20 Jun 2019 13:24:44.236 # Redis version=5.0.5, bits=64, commit=00000000, modified=0, pid=78289, just started
+78289:C 20 Jun 2019 13:24:44.236 # Configuration loaded
+[root@localhost 7000]# redis-server /opt/redis-cluster/redis-cluster/7005/redis.conf
+78316:C 20 Jun 2019 13:24:47.762 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+78316:C 20 Jun 2019 13:24:47.762 # Redis version=5.0.5, bits=64, commit=00000000, modified=0, pid=78316, just started
+78316:C 20 Jun 2019 13:24:47.762 # Configuration loaded
+[root@localhost 7000]# 
+[root@localhost 7000]# /opt/redis-cluster/redis-cluster/7000/redis-trib.rb create --replicas 1 192.168.88.111:7000 192.168.88.111:7001 192.168.88.111:7002 192.168.88.111:7003 192.168.88.111:7004 192.168.88.111:7005
+WARNING: redis-trib.rb is not longer available!
+You should use redis-cli instead.
+
+All commands and features belonging to redis-trib.rb have been moved
+to redis-cli.
+In order to use them you should call redis-cli with the --cluster
+option followed by the subcommand name, arguments and options.
+
+Use the following syntax:
+redis-cli --cluster SUBCOMMAND [ARGUMENTS] [OPTIONS]
+
+Example:
+redis-cli --cluster create 192.168.88.111:7000 192.168.88.111:7001 192.168.88.111:7002 192.168.88.111:7003 192.168.88.111:7004 192.168.88.111:7005 --cluster-replicas 1
+
+To get help about all subcommands, type:
+redis-cli --cluster help
+
+[root@localhost 7000]# redis-cli --cluster create 192.168.88.111:7000 192.168.88.111:7001 192.168.88.111:7002 192.168.88.111:7003 192.168.88.111:7004 192.168.88.111:7005 --cluster-replicas 1
+>>> Performing hash slots allocation on 6 nodes...
+Master[0] -> Slots 0 - 5460
+Master[1] -> Slots 5461 - 10922
+Master[2] -> Slots 10923 - 16383
+Adding replica 192.168.88.111:7004 to 192.168.88.111:7000
+Adding replica 192.168.88.111:7005 to 192.168.88.111:7001
+Adding replica 192.168.88.111:7003 to 192.168.88.111:7002
+>>> Trying to optimize slaves allocation for anti-affinity
+[WARNING] Some slaves are in the same host as their master
+M: ec78a11bfcb77d7a0b10be4f167aad66c2674f46 192.168.88.111:7000
+   slots:[0-5460] (5461 slots) master
+M: 82aa6615161a6498d51595ad5033451a4d25a130 192.168.88.111:7001
+   slots:[5461-10922] (5462 slots) master
+M: c2315d41570c833fb73931ad9e42b925c810f076 192.168.88.111:7002
+   slots:[10923-16383] (5461 slots) master
+S: dfefd4202804ce1ad8f6d1ba622f268322a5a7dc 192.168.88.111:7003
+   replicates 82aa6615161a6498d51595ad5033451a4d25a130
+S: 7eda0f871cecdf07ad95e7c2ed1f98d2604dd54b 192.168.88.111:7004
+   replicates c2315d41570c833fb73931ad9e42b925c810f076
+S: 8c62ca2dc9362f63a1ec78912d1de4ee238adb41 192.168.88.111:7005
+   replicates ec78a11bfcb77d7a0b10be4f167aad66c2674f46
+Can I set the above configuration? (type 'yes' to accept): yes
+>>> Nodes configuration updated
+>>> Assign a different config epoch to each node
+>>> Sending CLUSTER MEET messages to join the cluster
+Waiting for the cluster to join
+..
+>>> Performing Cluster Check (using node 192.168.88.111:7000)
+M: ec78a11bfcb77d7a0b10be4f167aad66c2674f46 192.168.88.111:7000
+   slots:[0-5460] (5461 slots) master
+   1 additional replica(s)
+S: 7eda0f871cecdf07ad95e7c2ed1f98d2604dd54b 192.168.88.111:7004
+   slots: (0 slots) slave
+   replicates c2315d41570c833fb73931ad9e42b925c810f076
+M: c2315d41570c833fb73931ad9e42b925c810f076 192.168.88.111:7002
+   slots:[10923-16383] (5461 slots) master
+   1 additional replica(s)
+M: 82aa6615161a6498d51595ad5033451a4d25a130 192.168.88.111:7001
+   slots:[5461-10922] (5462 slots) master
+   1 additional replica(s)
+S: 8c62ca2dc9362f63a1ec78912d1de4ee238adb41 192.168.88.111:7005
+   slots: (0 slots) slave
+   replicates ec78a11bfcb77d7a0b10be4f167aad66c2674f46
+S: dfefd4202804ce1ad8f6d1ba622f268322a5a7dc 192.168.88.111:7003
+   slots: (0 slots) slave
+   replicates 82aa6615161a6498d51595ad5033451a4d25a130
+[OK] All nodes agree about slots configuration.
+>>> Check for open slots...
+>>> Check slots coverage...
+[OK] All 16384 slots covered.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h3><p>验证集群可用性，连接启动一个redis节点，存取数据进行测试：</p>
+<pre class="line-numbers language-shell"><code class="language-shell">[root@localhost 7000]# redis-cli -c -h 192.168.88.111 -p 7000
+192.168.88.111:7000> set hello 123
+OK
+192.168.88.111:7000> get hello
+"123"
+192.168.88.111:7000> exit
+[root@localhost 7000]# redis-cli -c -h 192.168.88.111 -p 7004
+192.168.88.111:7004> set hello1 222
+-> Redirected to slot [11613] located at 192.168.88.111:7002
+OK
+192.168.88.111:7002> get hello1
+"222"
+192.168.88.111:7002> get hello
+-> Redirected to slot [866] located at 192.168.88.111:7000
+"123"<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>如果直接使用<code>redis-cli -h 192.168.88.111 -p 7000</code>进行连接，会出现<code>(error) MOVED 866 192.168.88.111:7000</code>类似的错误。</p>
+<p><code>redis-cli -c -h 192.168.88.111 -p 7000</code>中的<code>-c</code>表示使用集群模式进行连接。</p>
+<h4 id="启动关闭脚本"><a href="#启动关闭脚本" class="headerlink" title="启动关闭脚本"></a>启动关闭脚本</h4><h5 id="启动脚本"><a href="#启动脚本" class="headerlink" title="启动脚本"></a>启动脚本</h5><p>创建启动脚本start.sh，直接使用<code>sh start.sh</code>启动redis集群。</p>
+<pre class="line-numbers language-shell"><code class="language-shell">[root@localhost redis-cluster]# pwd
+/opt/redis-cluster/redis-cluster
+[root@localhost redis-cluster]# touch start.sh
+[root@localhost redis-cluster]# vim start.sh<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p><code>start.sh</code>内容：</p>
+<pre class="line-numbers language-shell"><code class="language-shell"># 分别启动7000-7005六个redis节点
+/opt/redis-cluster/redis-cluster/7000/redis-server /opt/redis-cluster/redis-cluster/7000/redis.conf
+/opt/redis-cluster/redis-cluster/7000/redis-server /opt/redis-cluster/redis-cluster/7001/redis.conf
+/opt/redis-cluster/redis-cluster/7000/redis-server /opt/redis-cluster/redis-cluster/7002/redis.conf
+/opt/redis-cluster/redis-cluster/7000/redis-server /opt/redis-cluster/redis-cluster/7003/redis.conf
+/opt/redis-cluster/redis-cluster/7000/redis-server /opt/redis-cluster/redis-cluster/7004/redis.conf
+/opt/redis-cluster/redis-cluster/7000/redis-server /opt/redis-cluster/redis-cluster/7005/redis.conf
+
+# 创建redis集群
+/opt/redis-cluster/redis-cluster/7000/redis-cli --cluster create 192.168.88.111:7000 192.168.88.111:7001 192.168.88.111:7002 192.168.88.111:7003 192.168.88.111:7004 192.168.88.111:7005 --cluster-replicas 1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>将<code>start.sh</code>设置成可执行文件：</p>
+<pre class="line-numbers language-shell"><code class="language-shell">[root@localhost redis-cluster]# pwd
+/opt/redis-cluster/redis-cluster
+[root@localhost redis-cluster]# ls
+7000  7001  7002  7003  7004  7005  start.sh  stop.sh
+[root@localhost redis-cluster]# chmod +x start.sh<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>注意：如果redis六个节点安装在不同的机器上，则需要分别启动各节点，最后再创建集群。</p>
+<h5 id="关闭命令"><a href="#关闭命令" class="headerlink" title="关闭命令"></a>关闭命令</h5><p>创建关闭脚本stop.sh，直接使用<code>sh stop.sh</code>命令关闭redis集群。</p>
+<pre class="line-numbers language-shell"><code class="language-shell">[root@localhost redis-cluster]# pwd
+/opt/redis-cluster/redis-cluster
+[root@localhost redis-cluster]# touch stop.sh
+[root@localhost redis-cluster]# vim stop.sh<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p><code>stop.sh</code>内容：</p>
+<pre class="line-numbers language-shell"><code class="language-shell"># 分别关闭7000-7005六个redis节点
+/opt/redis-cluster/redis-cluster/7000/redis-cli -p 7000 shutdown
+/opt/redis-cluster/redis-cluster/7000/redis-cli -p 7001 shutdown
+/opt/redis-cluster/redis-cluster/7000/redis-cli -p 7002 shutdown
+/opt/redis-cluster/redis-cluster/7000/redis-cli -p 7003 shutdown
+/opt/redis-cluster/redis-cluster/7000/redis-cli -p 7004 shutdown
+/opt/redis-cluster/redis-cluster/7000/redis-cli -p 7005 shutdown<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>将<code>stop.sh</code>设置成可执行文件：</p>
+<pre class="line-numbers language-shell"><code class="language-shell">[root@localhost redis-cluster]# pwd
+/opt/redis-cluster/redis-cluster
+[root@localhost redis-cluster]# ls
+7000  7001  7002  7003  7004  7005  start.sh  stop.sh
+[root@localhost redis-cluster]# chmod +x stop.sh<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>注意：关闭集群之后，再次启动会报错，详见<code>redis常见错误-错误1</code>。</p>
+<h3 id="redis常用命令"><a href="#redis常用命令" class="headerlink" title="redis常用命令"></a>redis常用命令</h3><p>连接单个节点<code>[-c：表示已集群模式连接]</code>：</p>
+<pre class="line-numbers language-shell"><code class="language-shell">/opt/redis-cluster/redis-cluster/7000/redis-cli -c -h 192.168.88.111 -p 7000<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>关闭单个节点：</p>
+<pre class="line-numbers language-shell"><code class="language-shell">/opt/redis-cluster/redis-cluster/7000/redis-cli -h 192.168.88.111 -p 7000 shutdown<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>启动redis-cluster：</p>
+<pre class="line-numbers language-shell"><code class="language-shell">/opt/redis-cluster/redis-cluster/start.sh<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>关闭redis-cluster：</p>
+<pre class="line-numbers language-shell"><code class="language-shell">/opt/redis-cluster/redis-cluster/stop.sh<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="redis常见错误"><a href="#redis常见错误" class="headerlink" title="redis常见错误"></a>redis常见错误</h3><h4 id="错误1"><a href="#错误1" class="headerlink" title="错误1"></a>错误1</h4><p><code>[ERR] Node 192.168.88.111:7000 is not empty. Either the node already knows other nodes (check with CLUSTER NODES) or contains some key in database 0.</code></p>
+<p>错误原因：由于上次redis集群没有配置成功，生成了每个节点的配置文件和db的备份文件，所以才会产生这个错误。</p>
+<p>解决方法：需要删除六个redis节点的备份文件，数据库文件，集群配置文件，即每个节点中的appendonly.aof、dump.rdb、node_xxx.conf文件都要被删除。</p>
+<p>另外还需要连接各个redis节点，清空数据。</p>
+<pre class="line-numbers language-shell"><code class="language-shell">[root@localhost 7000]# redis-cli -c -p 7000   # 连接redis节点
+127.0.0.1:7000> flushdb                       # 清空数据库
+OK
+127.0.0.1:7000> cluster reset                 # 重置
+OK<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>操作完上述步骤，重启所有的redis节点，之后再创建集群即可。</p>
+<h4 id="错误2"><a href="#错误2" class="headerlink" title="错误2"></a>错误2</h4><p><code>redis-cluster (error) MOVED 866 192.168.88.111:7000</code></p>
+<p>解决方法：连接时，使用<code>redis-cli -c -h 127.0.0.1 -p 7000</code>，而不是<code>redis-cli -h 127.0.0.1 -p 7000</code></p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="https://blog.csdn.net/zf_csdn/article/details/88304605" target="_blank" rel="noopener">CentOS7离线Redis集群搭建</a></p>
+<p><a href="https://blog.csdn.net/u010463613/article/details/89477462" target="_blank" rel="noopener">Centos7.x离线安装redis-cluster集群</a></p>
+<p><a href="https://my.oschina.net/ruoli/blog/2252393" target="_blank" rel="noopener">一文看懂 Redis5 搭建集群</a></p>
+
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://cuidonghuan.top" rel="external nofollow noreferrer">cuidonghuan</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://cuidonghuan.top/2019/061718992.html">http://cuidonghuan.top/2019/061718992.html</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="http://cuidonghuan.top" target="_blank">cuidonghuan</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/%E7%B3%BB%E7%BB%9F%E8%BF%90%E7%BB%B4/">
+                                    <span class="chip bg-color">系统运维</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2019/071615257.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="离线安装glibc-2.17">
+                        
+                        <span class="card-title">离线安装glibc-2.17</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            前言：  
+在安装redis5.0时，提示缺少：libc.so.6: version GLIBC_2.17 not found，经过一番查看，发现Linux系统自带的GLIBC版本较低，需要升级到2.17版本。本文演示了升级到GLIBC_2
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2019-07-16
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%B3%BB%E7%BB%9F%E8%BF%90%E7%BB%B4/" class="post-category">
+                                    系统运维
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E7%B3%BB%E7%BB%9F%E8%BF%90%E7%BB%B4/">
+                        <span class="chip bg-color">系统运维</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                本篇&nbsp;<i class="far fa-dot-circle"></i>
+            </div>
+            <div class="card">
+                <a href="/2019/061718992.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="centos7离线安装redis集群">
+                        
+                        <span class="card-title">centos7离线安装redis集群</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            环境准备需要准备gcc，redis，ruby，zlib，rubygems，openssl，redis-4.1.0.gem等相关依赖。
+说明：redis5.0版本以上，可以使用官方自带的集群构建方法，只需要安装gcc，redis即可，查看标*
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-06-17
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%B3%BB%E7%BB%9F%E8%BF%90%E7%BB%B4/" class="post-category">
+                                    系统运维
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E7%B3%BB%E7%BB%9F%E8%BF%90%E7%BB%B4/">
+                        <span class="chip bg-color">系统运维</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+<style type="text/css">
+code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
+</style>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            <span id="year">2019</span>
+            <a href="http://cuidonghuan.top" target="_blank">cuidonghuan</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/blinkfox" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:1181062873@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1181062873" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1181062873" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/search.xml", 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
