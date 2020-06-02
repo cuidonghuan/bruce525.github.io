@@ -249,8 +249,13 @@ mark {
     margin-bottom: 0;
 }
 
+/*
 .bg-color {
     background-image: linear-gradient(to right, #4cbf30 0%, #0f9d58 100%);
+}
+*/
+.bg-color {
+    background-image: linear-gradient(to right, #1a6f06 0%, #252a34 100%);
 }
 
 .text-color {
@@ -305,7 +310,7 @@ header .brand-logo .logo-img {
 }
 
 header .brand-logo .logo-span {
-    font-size: 2rem;
+    font-size: 1.6rem;
 }
 
 /*修改顶部 logo 的文字垂直对齐为 top，避免默认 middle 看起来偏下*/
@@ -553,7 +558,7 @@ header .go-back i {
 }
 
 .index-cover {
-    height: 100vh;
+    height: 70vh;
 }
 
 .post-cover {
@@ -584,7 +589,7 @@ header .go-back i {
 }
 
 .bg-cover .title {
-    font-size: 4rem;
+    font-size: 2.5rem;
     line-height: 1.85em;
     margin-bottom: 20px;
     position: relative;

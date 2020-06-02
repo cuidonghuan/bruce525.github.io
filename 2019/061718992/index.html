@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="centos7离线安装redis集群, Hexo">
-    <meta name="description" content="">
+    <meta name="keywords" content="centos7离线安装redis集群, Java Spring SpringBoot 算法 崔东欢">
+    <meta name="description" content="世界上任何书籍都不能带给你好运，但是它们能让你悄悄成为你自己。">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>centos7离线安装redis集群 | Hexo</title>
+    <title>centos7离线安装redis集群 | 崔东欢的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -33,6 +33,10 @@
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 
+<!-- 添加动态标签栏 -->
+<script type="text/javascript"> var OriginTitile = document.title, st; document.addEventListener("visibilitychange", function () { document.hidden ? (document.title = "Σ(っ °Д °;)っ喔哟，崩溃啦！", clearTimeout(st)) : (document.title = "φ(゜▽゜*)♪咦，又好了！", st = setTimeout(function () { document.title = OriginTitile }, 3e3)) })
+</script>
+
 <body>
     <header class="navbar-fixed">
     <nav id="headNav" class="bg-color nav-transparent">
@@ -42,7 +46,7 @@
                     
                     <img src="/medias/logo.png" class="logo-img" alt="LOGO">
                     
-                    <span class="logo-span">Hexo</span>
+                    <span class="logo-span">崔东欢的博客</span>
                 </a>
             </div>
             
@@ -105,28 +109,6 @@
     
   </li>
   
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/contact" class="waves-effect waves-light">
-      
-      <i class="fas fa-comments" style="zoom: 0.6;"></i>
-      
-      <span>留言板</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/friends" class="waves-effect waves-light">
-      
-      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
-      
-      <span>友情链接</span>
-    </a>
-    
-  </li>
-  
   <li>
     <a href="#searchModal" class="modal-trigger waves-effect waves-light">
       <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
@@ -141,10 +123,10 @@
         
         <img src="/medias/logo.png" class="logo-img circle responsive-img">
         
-        <div class="logo-name">Hexo</div>
+        <div class="logo-name">崔东欢的博客</div>
         <div class="logo-desc">
             
-            Never really desperate, only the lost of the soul.
+            世界上任何书籍都不能带给你好运，但是它们能让你悄悄成为你自己。
             
         </div>
     </div>
@@ -204,28 +186,6 @@
 			    <i class="fa-fw fas fa-user-circle"></i>
 			
 			关于
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/contact" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-comments"></i>
-			
-			留言板
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/friends" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-address-book"></i>
-			
-			友情链接
 		</a>
           
         </li>
@@ -397,17 +357,17 @@
         display: block;
     }
 
-    .toc-fixed .toc-link::before{
-        position: fixed!important;/*当toc的位置改为fixed时，.toc-link::before也要改为fixed*/
-    }
+//    .toc-fixed .toc-link::before{
+//        position: fixed!important;/*当toc的位置改为fixed时，.toc-link::before也要改为fixed*/
+//    }
 
     #toc-content .is-active-link {
         color: #42b983;
     }
 
-    #toc-content .is-active-link::before {
-        background-color: #42b983;
-    }
+//    #toc-content .is-active-link::before {
+//        background-color: #42b983;
+//    }
 
     #floating-toc-btn {
         position: fixed;
@@ -822,7 +782,7 @@ redis-ser 42451 root    7u  IPv4 13190586      0t0  TCP *:afs3-volser (LISTEN)<s
 <p>6个redis节点都已经成功启动，下一步创建集群。</p>
 <h4 id="创建redis集群"><a href="#创建redis集群" class="headerlink" title="创建redis集群"></a>创建redis集群</h4><p>创建redis-cluster集群命令：<code>/opt/redis-cluster/redis-cluster/7000/redis-trib.rb create --replicas 1 192.168.88.111:7000 192.168.88.111:7001 192.168.88.111:7002 192.168.88.111:7003 192.168.88.111:7004 192.168.88.111:7005</code></p>
 <p>redis集群默认前三个节点是master节点，后三个节点是slave节点。</p>
-<p>提示：<code>Can I set the above configuration? (type &#39;yes&#39; to accept): yes</code>，需要手动输入<code>yes</code>继续。</p>
+<p>提示：<code>Can I set the above configuration? (type 'yes' to accept): yes</code>，需要手动输入<code>yes</code>继续。</p>
 <pre class="line-numbers language-shell"><code class="language-shell">[root@localhost 7000]# /opt/redis-cluster/redis-cluster/7000/redis-trib.rb create --replicas 1 192.168.88.111:7000 192.168.88.111:7001 192.168.88.111:7002 192.168.88.111:7003 192.168.88.111:7004 192.168.88.111:7005
 112633:C 20 Jun 2019 14:42:06.657 # Configuration loaded
 >>> Performing hash slots allocation on 6 nodes...
@@ -1061,7 +1021,25 @@ OK<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><
 <h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="https://blog.csdn.net/zf_csdn/article/details/88304605" target="_blank" rel="noopener">CentOS7离线Redis集群搭建</a></p>
 <p><a href="https://blog.csdn.net/u010463613/article/details/89477462" target="_blank" rel="noopener">Centos7.x离线安装redis-cluster集群</a></p>
 <p><a href="https://my.oschina.net/ruoli/blog/2252393" target="_blank" rel="noopener">一文看懂 Redis5 搭建集群</a></p>
-
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
             </div>
             <hr/>
 
@@ -1149,6 +1127,33 @@ OK<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><
             
         </div>
     </div>
+
+    
+        <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
+
+<div class="card gitalk-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: '32fbd9bbb5a86c6a2f26',
+        clientSecret: '343e2c8a5d05bca2a1e110c5d78d4df8277cac5e',
+        repo: 'cuidonghuan.github.io',
+        owner: 'cuidonghuan',
+        admin: "cuidonghuan",
+        id: '2019-06-17T09-36-49',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+
+    gitalk.render('gitalk-container');
+</script>
 
     
 
@@ -1272,6 +1277,43 @@ OK<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><
 </div>
 
 
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('2000')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: 崔东欢的博客<br />'
+            + '文章作者: cuidonghuan<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
 
 <!-- 代码块功能依赖 -->
 <script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
@@ -1292,10 +1334,6 @@ OK<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><
 
 
 <!-- 代码块折行 -->
-
-<style type="text/css">
-code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
-</style>
 
 
     </div>
@@ -1399,19 +1437,23 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 
 
 
-    <footer class="page-footer bg-color">
+    <footer class="page-footer bg-color" style="padding-top: 15px;padding-bottom: 15px;">
     
-    <div class="container row center-align" style="margin-bottom: 0px !important;">
-        <div class="col s12 m8 l8 copy-right">
+	
+	<div class="container row center-align" style="margin-bottom: 0px !important;">
+        <!--
+		<div class="col s12 m8 l8 copy-right" >
+		-->
+		<div class="copy-right" >
             Copyright&nbsp;&copy;
             <span id="year">2019</span>
             <a href="http://cuidonghuan.top" target="_blank">cuidonghuan</a>
-            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
-            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            |&nbsp;基于&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            的&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+			&nbsp;主题构建&nbsp;|&nbsp;
+			<!--
             <br>
-            
-            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">7.6k</span>&nbsp;字
+		    -->
             
             
             
@@ -1419,31 +1461,26 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             
             
             <span id="busuanzi_container_site_pv">
-                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
-                    class="white-color"></span>&nbsp;次
+                <i class="far fa-eye"></i>&nbsp;PV:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次&nbsp;
             </span>
             
             
             <span id="busuanzi_container_site_uv">
-                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;UV:&nbsp;<span id="busuanzi_value_site_uv"
                     class="white-color"></span>&nbsp;人
             </span>
             
+			<!--
             <br>
+			-->
             
             <br>
             
         </div>
-        <div class="col s12 m4 l4 social-link social-statis">
-    <a href="https://github.com/cuidonghuan" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
-        <i class="fab fa-github"></i>
-    </a>
+		<!--
+		<div class="col s12 m4 l4 social-link social-statis">
 
-
-
-    <a href="mailto:donghuancui@163.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
-        <i class="fas fa-envelope-open"></i>
-    </a>
 
 
 
@@ -1458,6 +1495,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 
 
 </div>
+		-->
     </div>
 </footer>
 
@@ -1499,6 +1537,16 @@ $(function () {
     <script src="/js/matery.js"></script>
 
     <!-- Baidu Analytics -->
+
+<script>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?df3c7480e9c67d213f2a0735648eb2bd";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
 
     <!-- Baidu Push -->
 
