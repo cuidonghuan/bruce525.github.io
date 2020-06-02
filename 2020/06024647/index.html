@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="离线安装glibc-2.17, Hexo">
+    <meta name="keywords" content="Markdown语法展示, Hexo">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>离线安装glibc-2.17 | Hexo</title>
+    <title>Markdown语法展示 | Hexo</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -29,7 +29,7 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 4.2.1"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css">
+<meta name="generator" content="Hexo 4.2.1"><link rel="stylesheet" href="/css/prism-material-light.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 
@@ -309,12 +309,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/4.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">离线安装glibc-2.17</h1>
+                    <h1 class="description center-align post-title">Markdown语法展示</h1>
                 </div>
             </div>
         </div>
@@ -439,23 +439,14 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E7%B3%BB%E7%BB%9F%E8%BF%90%E7%BB%B4/">
-                                <span class="chip bg-color">系统运维</span>
+                            <a href="/tags/Markdown/">
+                                <span class="chip bg-color">Markdown</span>
                             </a>
                         
                     </div>
                     
                 </div>
                 <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/categories/%E7%B3%BB%E7%BB%9F%E8%BF%90%E7%BB%B4/" class="post-category">
-                                系统运维
-                            </a>
-                        
-                    </div>
                     
                 </div>
             </div>
@@ -464,81 +455,77 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-07-16
+                    2020-06-02
                 </div>
                 
 
                 
-
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2020-06-02
+                </div>
                 
 
                 
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    245
+                </div>
+                
 
                 
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    1 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
             </div>
         </div>
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p><code>前言：</code>  </p>
-<p>在安装<code>redis5.0</code>时，提示缺少：<code>libc.so.6: version GLIBC_2.17 not found</code>，经过一番查看，发现Linux系统自带的GLIBC版本较低，需要升级到2.17版本。本文演示了升级到<code>GLIBC_2.17</code>的操作过程。</p>
-<a id="more"></a>
+                <h2 id="二号标题"><a href="#二号标题" class="headerlink" title="二号标题"></a>二号标题</h2><blockquote>
+<p>引用的使用</p>
+</blockquote>
+<h2 id="三号标题"><a href="#三号标题" class="headerlink" title="三号标题"></a>三号标题</h2><pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">JavaSample</span> <span class="token punctuation">{</span>
+    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">multiLine</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"多行显示多行显示多行显示多行显示多行显示多行显示多行显示多行显示多行显示多行显示多行显示多行显示多行显示多行显示多行显示多行显示多行显示多行显示多行显示"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-
-
-<h3 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h3><p>当前环境信息：</p>
-<pre class="line-numbers language-shell"><code class="language-shell">os：centos6.6
-gcc:4.4
-gblic:2.12<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p>查看当前系统glibc版本：<code>strings /lib64/libc.so.6 | grep &quot;GLIBC_&quot;</code></p>
-<pre class="line-numbers language-shell"><code class="language-shell">[root@localhost ~]# strings /lib64/libc.so.6 | grep "GLIBC_"
-GLIBC_2.12<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p>准备glibc-2.17源码：<a href="http://ftp.gnu.org/pub/gnu/glibc/glibc-2.17.tar.gz" target="_blank" rel="noopener">glibc-2.17.tar.gz</a></p>
-<p>准备好源码之后，上传到服务器，下面准备编译安装glibc-2.17。</p>
-<h3 id="安装glibc-2-17"><a href="#安装glibc-2-17" class="headerlink" title="安装glibc-2.17"></a>安装glibc-2.17</h3><p>解压<code>tar -zxvf glibc-2.17.tar.gz</code>：</p>
-<pre class="line-numbers language-shell"><code class="language-shell">[root@localhost glibc]# tar -zxvf glibc-2.17.tar.gz<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>创建编译安装目录：</p>
-<pre class="line-numbers language-shell"><code class="language-shell">[root@localhost glibc-2.17]# pwd
-/opt/glibc/glibc-2.17
-[root@localhost glibc-2.17]# mkdir build                # 创建编译安装目录
-[root@localhost glibc-2.17]# cd build
-[root@localhost build]# pwd
-/opt/glibc/glibc-2.17/build<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>安装前配置：</p>
-<pre class="line-numbers language-shell"><code class="language-shell">[root@localhost build]# pwd
-/opt/glibc/glibc-2.17/build
-[root@localhost build]# ../configure --prefix=/usr --disable-profile --enable-add-ons --with-headers=/usr/include --with-binutils=/usr/bin            # 配置<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p>编译安装：</p>
-<pre class="line-numbers language-shell"><code class="language-shell">[root@localhost build]# pwd
-/opt/glibc/glibc-2.17/build
-[root@localhost build]make                              # 编译
-[root@localhost build]make install                      # 安装<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<p>安装完成后，再次查看glibc版本：</p>
-<pre class="line-numbers language-shell"><code class="language-shell">[root@localhost ~]# strings /lib64/libc.so.6 | grep "GLIBC_"
-GLIBC_2.2.5
-GLIBC_2.2.6
-GLIBC_2.3
-GLIBC_2.3.2
-GLIBC_2.3.3
-GLIBC_2.3.4
-GLIBC_2.4
-GLIBC_2.5
-GLIBC_2.6
-GLIBC_2.7
-GLIBC_2.8
-GLIBC_2.9
-GLIBC_2.10
-GLIBC_2.11
-GLIBC_2.12
-GLIBC_2.13
-GLIBC_2.14
-GLIBC_2.15
-GLIBC_2.16
-GLIBC_2.17
-GLIBC_PRIVATE
-
-可以看到支持的最高版本。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>至此，glibc升级成功。</p>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        Sysout<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"Java Sample!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-shell"><code class="language-shell">nohup java -jar sample.jar &<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-json"><code class="language-json"><span class="token punctuation">{</span>
+    <span class="token property">"key"</span> <span class="token operator">:</span> <span class="token string">"value"</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h3 id="字体"><a href="#字体" class="headerlink" title="字体"></a>字体</h3><p><code>高亮字体</code>  </p>
+<p><em>斜体斜体</em></p>
+<p><strong>黑体黑体</strong></p>
+<p><strong><em>黑体斜体</em></strong></p>
+<table>
+<thead>
+<tr>
+<th>内容</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>单元格</td>
+<td>单元格</td>
+</tr>
+</tbody></table>
+<p><a href="https://www.baidu.com" target="_blank" rel="noopener">百度百度百度百度百度百度</a></p>
+<p><img src="http://a2.att.hudong.com/36/48/19300001357258133412489354717.jpg" alt="图片图片图片图片图片"></p>
+<h3 id="普通字体"><a href="#普通字体" class="headerlink" title="普通字体"></a>普通字体</h3><p>普通字体普通字体普通字体普通字体普通字体普通字体普通字体普通字体普通字体普通字体普通字体普通字体普通字体普通字体普通字体普通字体普通字体普通字体普通字体普通字体普通字体</p>
 
             </div>
             <hr/>
@@ -564,7 +551,7 @@ GLIBC_PRIVATE
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://cuidonghuan.top/2019/071615257.html">http://cuidonghuan.top/2019/071615257.html</a>
+                    <a href="http://cuidonghuan.top/2020/06024647/">http://cuidonghuan.top/2020/06024647/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -602,8 +589,8 @@ GLIBC_PRIVATE
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E7%B3%BB%E7%BB%9F%E8%BF%90%E7%BB%B4/">
-                                    <span class="chip bg-color">系统运维</span>
+                                <a href="/tags/Markdown/">
+                                    <span class="chip bg-color">Markdown</span>
                                 </a>
                             
                         </div>
@@ -624,132 +611,6 @@ GLIBC_PRIVATE
 
                 </div>
             </div>
-            
-                <style>
-    #reward {
-        margin: 40px 0;
-        text-align: center;
-    }
-
-    #reward .reward-link {
-        font-size: 1.4rem;
-        line-height: 38px;
-    }
-
-    #reward .btn-floating:hover {
-        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
-    }
-
-    #rewardModal {
-        width: 320px;
-        height: 350px;
-    }
-
-    #rewardModal .reward-title {
-        margin: 15px auto;
-        padding-bottom: 5px;
-    }
-
-    #rewardModal .modal-content {
-        padding: 10px;
-    }
-
-    #rewardModal .close {
-        position: absolute;
-        right: 15px;
-        top: 15px;
-        color: rgba(0, 0, 0, 0.5);
-        font-size: 1.3rem;
-        line-height: 20px;
-        cursor: pointer;
-    }
-
-    #rewardModal .close:hover {
-        color: #ef5350;
-        transform: scale(1.3);
-        -moz-transform:scale(1.3);
-        -webkit-transform:scale(1.3);
-        -o-transform:scale(1.3);
-    }
-
-    #rewardModal .reward-tabs {
-        margin: 0 auto;
-        width: 210px;
-    }
-
-    .reward-tabs .tabs {
-        height: 38px;
-        margin: 10px auto;
-        padding-left: 0;
-    }
-
-    .reward-content ul {
-        padding-left: 0 !important;
-    }
-
-    .reward-tabs .tabs .tab {
-        height: 38px;
-        line-height: 38px;
-    }
-
-    .reward-tabs .tab a {
-        color: #fff;
-        background-color: #ccc;
-    }
-
-    .reward-tabs .tab a:hover {
-        background-color: #ccc;
-        color: #fff;
-    }
-
-    .reward-tabs .wechat-tab .active {
-        color: #fff !important;
-        background-color: #22AB38 !important;
-    }
-
-    .reward-tabs .alipay-tab .active {
-        color: #fff !important;
-        background-color: #019FE8 !important;
-    }
-
-    .reward-tabs .reward-img {
-        width: 210px;
-        height: 210px;
-    }
-</style>
-
-<div id="reward">
-    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
-
-    <!-- Modal Structure -->
-    <div id="rewardModal" class="modal">
-        <div class="modal-content">
-            <a class="close modal-close"><i class="fas fa-times"></i></a>
-            <h4 class="reward-title">你的赏识是我前进的动力</h4>
-            <div class="reward-content">
-                <div class="reward-tabs">
-                    <ul class="tabs row">
-                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
-                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
-                    </ul>
-                    <div id="alipay">
-                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
-                    </div>
-                    <div id="wechat">
-                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<script>
-    $(function () {
-        $('.tabs').tabs();
-    });
-</script>
-
             
         </div>
     </div>
@@ -776,7 +637,58 @@ GLIBC_PRIVATE
                 <i class="far fa-dot-circle"></i>&nbsp;本篇
             </div>
             <div class="card">
-                <a href="/2019/071615257.html">
+                <a href="/2020/06024647/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="Markdown语法展示">
+                        
+                        <span class="card-title">Markdown语法展示</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            二号标题
+引用的使用
+
+三号标题public class JavaSample {
+    private static void multiLine() {
+        System.out.println("多行显示多行显示多行显示
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-06-02
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            cuidonghuan
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Markdown/">
+                        <span class="chip bg-color">Markdown</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2019/092015257/">
                     <div class="card-image">
                         
                         
@@ -794,58 +706,7 @@ GLIBC_PRIVATE
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-07-16
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E7%B3%BB%E7%BB%9F%E8%BF%90%E7%BB%B4/" class="post-category">
-                                    系统运维
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/%E7%B3%BB%E7%BB%9F%E8%BF%90%E7%BB%B4/">
-                        <span class="chip bg-color">系统运维</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2019/061718992.html">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="centos7离线安装redis集群">
-                        
-                        <span class="card-title">centos7离线安装redis集群</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            环境准备需要准备gcc，redis，ruby，zlib，rubygems，openssl，redis-4.1.0.gem等相关依赖。
-说明：redis5.0版本以上，可以使用官方自带的集群构建方法，只需要安装gcc，redis即可，查看标*
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-06-17
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-09-20
                             </span>
                         <span class="publish-author">
                             
@@ -1015,6 +876,9 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
             <br>
             
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">7.6k</span>&nbsp;字
+            
             
             
             
@@ -1037,13 +901,13 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             
         </div>
         <div class="col s12 m4 l4 social-link social-statis">
-    <a href="https://github.com/blinkfox" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+    <a href="https://github.com/cuidonghuan" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
         <i class="fab fa-github"></i>
     </a>
 
 
 
-    <a href="mailto:1181062873@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+    <a href="mailto:donghuancui@163.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
         <i class="fas fa-envelope-open"></i>
     </a>
 
@@ -1053,19 +917,11 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 
 
 
-    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1181062873" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1181062873" data-position="top" data-delay="50">
-        <i class="fab fa-qq"></i>
-    </a>
 
 
 
 
 
-
-
-    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
-        <i class="fas fa-rss"></i>
-    </a>
 
 </div>
     </div>
