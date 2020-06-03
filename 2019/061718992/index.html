@@ -17,17 +17,17 @@
 
 
     <title>centos7离线安装redis集群 | 崔东欢的博客</title>
-    <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/cuidonghuan/cuidonghuan.github.io/favicon.png">
+    <link rel="icon" type="image/png" href="/favicon.png">
 
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/cuidonghuan/cuidonghuan.github.io/libs/awesome/css/all.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/cuidonghuan/cuidonghuan.github.io/libs/materialize/materialize.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/cuidonghuan/cuidonghuan.github.io/libs/aos/aos.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/cuidonghuan/cuidonghuan.github.io/libs/animate/animate.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/cuidonghuan/cuidonghuan.github.io/libs/lightGallery/css/lightgallery.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/cuidonghuan/cuidonghuan.github.io/css/matery.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/cuidonghuan/cuidonghuan.github.io/css/my.css">
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
 
-    <script src="https://cdn.jsdelivr.net/gh/cuidonghuan/cuidonghuan.github.io/libs/jquery/jquery.min.js"></script>
+    <script src="/libs/jquery/jquery.min.js"></script>
 
 <meta name="generator" content="Hexo 4.2.1"><link rel="stylesheet" href="/css/prism-material-light.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
@@ -43,10 +43,12 @@
         <div id="navContainer" class="nav-wrapper container">
             <div class="brand-logo">
                 <a href="/" class="waves-effect waves-light">
-                    
-                    <img src="https://cdn.jsdelivr.net/gh/cuidonghuan/blog-image/img/202020200603094907.gif" data-original="https://cdn.jsdelivr.net/gh/cuidonghuan/cuidonghuan.github.io/medias/logo.png" class="logo-img" alt="LOGO">
-                    
-                    <span class="logo-span">崔东欢的博客</span>
+					<div>
+						
+						<img src="/medias/loading.gif" data-original="/medias/logo.png" class="logo-img" alt="LOGO">
+						
+						<span class="logo-span">崔东欢的博客</span>
+					</div>
                 </a>
             </div>
             
@@ -121,7 +123,7 @@
 
     <div class="mobile-head bg-color">
         
-        <img src="https://cdn.jsdelivr.net/gh/cuidonghuan/blog-image/img/202020200603094907.gif" data-original="https://cdn.jsdelivr.net/gh/cuidonghuan/cuidonghuan.github.io/medias/logo.png" class="logo-img circle responsive-img">
+        <img src="/medias/loading.gif" data-original="/medias/logo.png" class="logo-img circle responsive-img">
         
         <div class="logo-name">崔东欢的博客</div>
         <div class="logo-desc">
@@ -269,7 +271,7 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/cuidonghuan/cuidonghuan.github.io/medias/featureimages/2.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -287,7 +289,7 @@
 <main class="post-container content">
 
     
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/cuidonghuan/cuidonghuan.github.io/libs/tocbot/tocbot.css">
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
 <style>
     #articleContent h1::before,
     #articleContent h2::before,
@@ -514,7 +516,7 @@ gcc-4.8.2-16.el7.x86_64.rpm<span aria-hidden="true" class="line-numbers-rows"><s
 [root@localhost ruby-2.5.5]# make && make install          # 编译安装<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>配置ruby环境变量：</p>
 <p>编辑<code>/etc/profile</code>配置文件，在PATH中添加ruby的bin目录路径。执行<code>source /etc/profile</code>命令使配置立即生效。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/cuidonghuan/blog-image/img/202020200603094907.gif" data-original="http://cuidonghuan.gitee.io/blog-image/blog/201906/ruby%E5%AE%89%E8%A3%85%E6%88%AA%E5%9B%BE.png" alt="ruby安装截图.png"></p>
+<p><img src="/medias/loading.gif" data-original="http://cuidonghuan.gitee.io/blog-image/blog/201906/ruby%E5%AE%89%E8%A3%85%E6%88%AA%E5%9B%BE.png" alt="ruby安装截图.png"></p>
 <pre class="line-numbers language-shell"><code class="language-shell">[root@localhost ruby]# vim /etc/profile           # 编辑profile配置文件
 [root@localhost ruby]# source /etc/profile        # 使配置文件立即生效
 [root@localhost ruby]# echo $PATH                 # 输出PATH信息
@@ -566,7 +568,7 @@ compiling zlib.c
 linking shared-object zlib.so
 [root@localhost zlib]# make install
 /usr/bin/install -c -m 0755 zlib.so /usr/local/ruby/lib/ruby/site_ruby/2.5.0/x86_64-linux<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><img src="https://cdn.jsdelivr.net/gh/cuidonghuan/blog-image/img/202020200603094907.gif" data-original="D:%5Cblog%5Chexo%5Csource_posts%5Ccentos7%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85redis%E9%9B%86%E7%BE%A4.assets%5C1560994422642.png" alt="安装zlib过程中修改Makefile文件内容">解决完缺少zlib的问题后，重新安装rubygems。</p>
+<p><img src="/medias/loading.gif" data-original="D:%5Cblog%5Chexo%5Csource_posts%5Ccentos7%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85redis%E9%9B%86%E7%BE%A4.assets%5C1560994422642.png" alt="安装zlib过程中修改Makefile文件内容">解决完缺少zlib的问题后，重新安装rubygems。</p>
 <pre class="line-numbers language-shell"><code class="language-shell">[root@localhost package]# cd /opt/redis-cluster/package/
 [root@localhost package]# tar -zxvf rubygems-3.0.4.tgz    # 解压rubygems压缩包
 [root@localhost package]# cd rubygems-3.0.4/
@@ -576,7 +578,7 @@ linking shared-object zlib.so
 3.0.4<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>安装完成后，配置rubygems环境变量：</p>
 <p>rubygems安装完成后，配置rubygems环境变量。编辑vim /etc/profile文件，在文件当中PATH当中加入安装rubygems的bin目录路径，路径为安装目录bin文件夹/root/public/rubygems-3.0.3/bin/ 【这个路径就是你解压出rubygems的路径】 然后保存，执行命令：source /etc/profile让配置立即生效，然后echo $PATH可以查看变量已被添加。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/cuidonghuan/blog-image/img/202020200603094907.gif" data-original="http://cuidonghuan.gitee.io/blog-image/blog/201906/rubygems%E5%AE%89%E8%A3%85%E6%88%AA%E5%9B%BE.png" alt="rubygems安装截图.png"></p>
+<p><img src="/medias/loading.gif" data-original="http://cuidonghuan.gitee.io/blog-image/blog/201906/rubygems%E5%AE%89%E8%A3%85%E6%88%AA%E5%9B%BE.png" alt="rubygems安装截图.png"></p>
 <h5 id="安装openssl1-1-0i"><a href="#安装openssl1-1-0i" class="headerlink" title="安装openssl1.1.0i"></a>安装openssl1.1.0i</h5><p>解压openssl，编译安装</p>
 <pre class="line-numbers language-shell"><code class="language-shell">[root@localhost package]# tar -zxvf openssl-1.1.0i.tar.gz   ## 解压openssl
 [root@localhost package]# cd openssl-1.1.0i
@@ -686,7 +688,7 @@ WARNING:  Unable to pull data from 'https://rubygems.org/': no such name (https:
 <pre class="line-numbers language-shell"><code class="language-shell">[root@localhost package]# gem list redis
 *** LOCAL GEMS ***
 redis (4.1.0)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p><img src="https://cdn.jsdelivr.net/gh/cuidonghuan/blog-image/img/202020200603094907.gif" data-original="http://cuidonghuan.gitee.io/blog-image/blog/201906/%E5%AE%89%E8%A3%85redis-rubygems4.1.0%E7%BB%93%E6%9E%9C%E6%88%AA%E5%9B%BE.png" alt="安装redis-rubygems4.1.0结果截图.png"></p>
+<p><img src="/medias/loading.gif" data-original="http://cuidonghuan.gitee.io/blog-image/blog/201906/%E5%AE%89%E8%A3%85redis-rubygems4.1.0%E7%BB%93%E6%9E%9C%E6%88%AA%E5%9B%BE.png" alt="安装redis-rubygems4.1.0结果截图.png"></p>
 <h3 id="搭建集群"><a href="#搭建集群" class="headerlink" title="搭建集群"></a>搭建集群</h3><blockquote>
 <p>集群的搭建，主要分为：集群节点的配置，各个节点的启动，集群的创建等步骤。</p>
 </blockquote>
@@ -1110,12 +1112,12 @@ OK<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><
                     
                 </div>
                 <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
-                    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/cuidonghuan/cuidonghuan.github.io/libs/share/css/share.min.css">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
 <div id="article-share">
 
     
     <div class="social-share" data-sites="qq,qzone,wechat,weibo" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
-    <script src="https://cdn.jsdelivr.net/gh/cuidonghuan/cuidonghuan.github.io/libs/share/js/social-share.min.js"></script>
+    <script src="/libs/share/js/social-share.min.js"></script>
     
 
     
@@ -1129,8 +1131,8 @@ OK<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><
     </div>
 
     
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/cuidonghuan/cuidonghuan.github.io/libs/gitalk/gitalk.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/cuidonghuan/cuidonghuan.github.io/css/my-gitalk.css">
+        <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
 
 <div class="card gitalk-card" data-aos="fade-up">
     <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
@@ -1140,7 +1142,7 @@ OK<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><
     <div id="gitalk-container" class="card-content"></div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/gh/cuidonghuan/cuidonghuan.github.io/libs/gitalk/gitalk.min.js"></script>
+<script src="/libs/gitalk/gitalk.min.js"></script>
 <script>
     let gitalk = new Gitalk({
         clientID: '32fbd9bbb5a86c6a2f26',
@@ -1180,7 +1182,7 @@ OK<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><
                     <div class="card-image">
                         
                         
-                        <img src="https://cdn.jsdelivr.net/gh/cuidonghuan/blog-image/img/202020200603094907.gif" data-original="https://cdn.jsdelivr.net/gh/cuidonghuan/cuidonghuan.github.io/medias/featureimages/6.jpg" class="responsive-img" alt="离线安装glibc-2.17">
+                        <img src="/medias/loading.gif" data-original="/medias/featureimages/6.jpg" class="responsive-img" alt="离线安装glibc-2.17">
                         
                         <span class="card-title">离线安装glibc-2.17</span>
                     </div>
@@ -1230,7 +1232,7 @@ OK<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><
                     <div class="card-image">
                         
                         
-                        <img src="https://cdn.jsdelivr.net/gh/cuidonghuan/blog-image/img/202020200603094907.gif" data-original="https://cdn.jsdelivr.net/gh/cuidonghuan/cuidonghuan.github.io/medias/featureimages/2.jpg" class="responsive-img" alt="centos7离线安装redis集群">
+                        <img src="/medias/loading.gif" data-original="/medias/featureimages/2.jpg" class="responsive-img" alt="centos7离线安装redis集群">
                         
                         <span class="card-title">centos7离线安装redis集群</span>
                     </div>
@@ -1316,21 +1318,21 @@ OK<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><
 
 
 <!-- 代码块功能依赖 -->
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/cuidonghuan/cuidonghuan.github.io/libs/codeBlock/codeBlockFuction.js"></script>
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
 
 <!-- 代码语言 -->
 
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/cuidonghuan/cuidonghuan.github.io/libs/codeBlock/codeLang.js"></script>
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
 
 
 <!-- 代码块复制 -->
 
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/cuidonghuan/cuidonghuan.github.io/libs/codeBlock/codeCopy.js"></script>
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
 
 
 <!-- 代码块收缩 -->
 
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/cuidonghuan/cuidonghuan.github.io/libs/codeBlock/codeShrink.js"></script>
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
 
 
 <!-- 代码块折行 -->
@@ -1358,7 +1360,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 </div>
 
 
-<script src="https://cdn.jsdelivr.net/gh/cuidonghuan/cuidonghuan.github.io/libs/tocbot/tocbot.min.js"></script>
+<script src="/libs/tocbot/tocbot.min.js"></script>
 <script>
     $(function () {
         tocbot.init({
@@ -1518,10 +1520,10 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
     </div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/gh/cuidonghuan/cuidonghuan.github.io/js/search.js"></script>
+<script src="/js/search.js"></script>
 <script type="text/javascript">
 $(function () {
-    searchFunc("https://cdn.jsdelivr.net/gh/cuidonghuan/cuidonghuan.github.io/search.xml", 'searchInput', 'searchResult');
+    searchFunc("/search.xml", 'searchInput', 'searchResult');
 });
 </script>
 
@@ -1533,12 +1535,12 @@ $(function () {
 </div>
 
 
-    <script src="https://cdn.jsdelivr.net/gh/cuidonghuan/cuidonghuan.github.io/libs/materialize/materialize.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/cuidonghuan/cuidonghuan.github.io/libs/masonry/masonry.pkgd.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/cuidonghuan/cuidonghuan.github.io/libs/aos/aos.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/cuidonghuan/cuidonghuan.github.io/libs/scrollprogress/scrollProgress.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/cuidonghuan/cuidonghuan.github.io/libs/lightGallery/js/lightgallery-all.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/cuidonghuan/cuidonghuan.github.io/js/matery.js"></script>
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
 
     <!-- Baidu Analytics -->
 
@@ -1570,7 +1572,7 @@ $(function () {
 
     
     
-    <script async src="https://cdn.jsdelivr.net/gh/cuidonghuan/cuidonghuan.github.io/libs/others/busuanzi.pure.mini.js"></script>
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
     
 
     
@@ -1582,11 +1584,11 @@ $(function () {
     
 
     
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/cuidonghuan/cuidonghuan.github.io/libs/background/ribbon-dynamic.js" async="async"></script>
+    <script type="text/javascript" src="/libs/background/ribbon-dynamic.js" async="async"></script>
     
 
     
-    <script src="https://cdn.jsdelivr.net/gh/cuidonghuan/cuidonghuan.github.io/libs/instantpage/instantpage.js" type="module"></script>
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
 
 <script>

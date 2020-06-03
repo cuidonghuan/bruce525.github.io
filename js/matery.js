@@ -105,6 +105,11 @@ $(function () {
             // 启用字幕
             subHtmlSelectorRelative: true
         });
+		
+		// 解决查看文章中图片时，gallery插件左右翻看图片都是loading图片的bug
+		$(document).find('img[data-original]').each(function(){
+			$(this).parent().attr("href", $(this).attr("data-original"));
+		});
 
         // progress bar init
         const progressElement = window.document.querySelector('.progress-bar');
