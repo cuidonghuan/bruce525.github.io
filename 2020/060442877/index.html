@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Markdown基本语法, Java,Spring,SpringBoot,算法">
+    <meta name="keywords" content="二分查找, Java,Spring,SpringBoot,算法">
     <meta name="description" content="世界上任何书籍都不能带给你好运，但是它们能让你悄悄成为你自己。">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Markdown基本语法 | 崔东欢的博客</title>
+    <title>二分查找 | 崔东欢的博客</title>
     <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/cuidonghuan/cuidonghuan.github.io/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/cuidonghuan/cuidonghuan.github.io/libs/awesome/css/all.css">
@@ -271,12 +271,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/cuidonghuan/cuidonghuan.github.io/medias/featureimages/15.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/cuidonghuan/cuidonghuan.github.io/medias/featureimages/19.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Markdown基本语法</h1>
+                    <h1 class="description center-align post-title">二分查找</h1>
                 </div>
             </div>
         </div>
@@ -401,8 +401,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Markdown/">
-                                <span class="chip bg-color">Markdown</span>
+                            <a href="/tags/BinarySearch/">
+                                <span class="chip bg-color">BinarySearch</span>
                             </a>
                         
                     </div>
@@ -413,8 +413,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E5%86%99%E4%BD%9C/" class="post-category">
-                                写作
+                            <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category">
+                                算法
                             </a>
                         
                     </div>
@@ -426,7 +426,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-06-02
+                    2020-06-04
                 </div>
                 
 
@@ -440,14 +440,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3k
+                    813
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    10 分
+                    3 分
                 </div>
                 
 
@@ -463,257 +463,86 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <blockquote>
-<p>Markdown是一种纯文本格式的标记语言。虽说是一门语言，但学习起来却是特别的简单，可能只需要你一杯茶的功夫（手动滑稽）。</p>
+<p>本文描述了最基本的二分查找的算法思想，及Java语言的代码实现。</p>
 </blockquote>
-<h2 id="一、为什么使用Markdown"><a href="#一、为什么使用Markdown" class="headerlink" title="一、为什么使用Markdown?"></a>一、为什么使用Markdown?</h2><p>为什么使用Markdown？<strong>因为它好用！</strong></p>
-<p>一款写作工具是否好用，需要结合它的使用场景来衡量。我个人的使用场景主要包括：记笔记、编写项目相关文档、写博客等。我选择写作工具一般是从以下几点来考虑：<code>写作效率</code>、<code>易用性</code>、<code>美观度</code>、<code>上手难度</code>、<code>是否收费</code>，结合这几点再来说说我们现在在用的一些写作工具吧。</p>
-<ul>
-<li>Office系列：功能强大、排版能力要求较高、收费软件。</li>
-<li>WPS系列：可以看作为Office系列的替代工具，功能基本一致，基本功能免费。</li>
-<li>记事本系列：使用简单，纯文本保存，不支持文字排版。</li>
-</ul>
-<p>对于我个人来说，有时候在编写一个文档时，很多的时间都花费在排版上面。同样的文档内容，为了获得一个完美的排版效果，不得不一遍遍修改。记事本虽然不需要花时间进行排版，但它只能保存纯本文，不能进行格式化排版，无法表达突出、重点内容。</p>
-<p>那有没有一种既拥有记事本的简单，又拥有像Word这样排版能力的写作工具呢？答案肯定是有的，那就是<em>Markdown编辑器</em>。Markdown提供给我们一种像使用记事本一样简单的写作语法，只需要几分钟的简单练习，就可以掌握基本的Markdown语法。之后通过Markdown解析器可以将Markdown格式的文档解析成美观的页面。这样我们就可以摆脱排版的困扰，从而专心写作。</p>
-<h2 id="二、如何使用Markdown"><a href="#二、如何使用Markdown" class="headerlink" title="二、如何使用Markdown?"></a>二、如何使用Markdown?</h2><p>“功欲善其事，必先利其器”，虽然使用记事本就可以进行Markdown文档的编写，但作为一个有追求的人，怎么能这么将就呢！这里介绍一款我使用过的最好的Markdown编辑器<a href="https://www.typora.io/" target="_blank" rel="noopener">Typora</a>，没有之一！<code>Typora</code>是一款免费的、美观的、支持全平台的Markdown编辑工具，支持专注模式、实时预览、”What You See Is What You Mean !” 。同时Typora还支持将Markdown文档导出成各种格式的文档，例如：PDF、Word、HTML等等。</p>
-<p>让我们来实际的感受一下Typora的 “What You See Is What You Mean !” </p>
-<video controls="controls" autoplay="autoplay" loop="loop" height="440px" width="498px">
-  <source src="https://www.typora.io/img/beta.mp4" type="video/mp4">
-Your browser does not support the video tag.
-</video>
-
-<p>在进行Markdown基本语法的学习之前，我们最好先把Typora安装好，这样就可以一边学习一边练习了！</p>
-<blockquote>
-<p>Typora Windows版本：<a href="https://www.typora.io/#windows" target="_blank" rel="noopener">点我下载</a> &nbsp;&nbsp;|&nbsp;&nbsp;Typora Linux版本：<a href="https://www.typora.io/#linux" target="_blank" rel="noopener">点我下载</a>&nbsp;&nbsp;|&nbsp;&nbsp;Typora Mac版本：<a href="https://www.typora.io/download/Typora.dmg" target="_blank" rel="noopener">点我下载</a></p>
+<h1 id="一、二分查找算法思想"><a href="#一、二分查找算法思想" class="headerlink" title="一、二分查找算法思想"></a>一、二分查找算法思想</h1><blockquote>
+<p>定义：二分查找用于判断一个关键字在一个有序序列中是否存在。注意：二分查找算法只适用于有序序列。</p>
 </blockquote>
-<h2 id="三、Markdown基本语法"><a href="#三、Markdown基本语法" class="headerlink" title="三、Markdown基本语法"></a>三、Markdown基本语法</h2><p>Markdown基本语法主要包括以下几个方面：</p>
-<ul>
-<li>文章标题</li>
-<li>字体格式</li>
-<li>引用</li>
-<li>列表</li>
-<li>链接</li>
-<li>图片</li>
-<li>表格</li>
-<li>代码块</li>
-<li>分割线</li>
-</ul>
-<h3 id="1、文章标题"><a href="#1、文章标题" class="headerlink" title="1、文章标题"></a>1、文章标题</h3><p>文章标题共分为六级，类似<code>HTML</code>中的<a href="https://www.w3school.com.cn/tags/tag_hn.asp" target="_blank" rel="noopener">&lt;h1&gt;-&lt;h6&gt;</a>标签，一级标题用<code>#</code>表示，二级标题用<code>##</code>表示，以此类推，六级标题用<code>######</code>表示。</p>
-<p>Markdown标题语法：</p>
-<pre class="line-numbers language-md"><code class="language-md"># 一级标题名称
-## 二级标题名称
-### 三级标题名称
-#### 四级标题名称
-##### 五级标题名称
-###### 六级标题名称<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><code>注意：</code>标题语法中，<code>#</code>与标题名称之间有一个空格，空格缺少时语法无法正确解析。</p>
-<p>Markdown标题实际效果：</p>
-<img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/cuidonghuan/blog-image//img/202020200604103919.png" alt="Markdown标题实际效果" style="zoom:50%;">
-
-<h3 id="2、字体格式"><a href="#2、字体格式" class="headerlink" title="2、字体格式"></a>2、字体格式</h3><p>字体格式主要有：<em>斜体字体</em>、<strong>字体加粗</strong>、<strong><em>斜体加粗字体</em></strong>、<del>加删除线的文字</del>。我们使用``(键盘<code>波浪线~</code>下面的反引号)来表示行内代码，类似高亮文字。</p>
-<p>Markdown字体格式相关语法：</p>
-<pre class="line-numbers language-md"><code class="language-md">*需要斜体的文字使用一个星号包括起来*
-**需要加粗的文字使用两个星号包括起来**
-***需要斜体加粗的文字使用三个星号包括起来***
-~~需要加删除线的文字使用两个波浪线包括起来~~
-`inline code,行内代码`<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>Markdown字体格式具体效果：<br><em>需要斜体的文字使用一个星号包括起来</em><br><strong>需要加粗的文字使用两个星号包括起来</strong><br><strong><em>需要斜体加粗的文字使用三个星号包括起来</em></strong><br><del>需要加删除线的文字使用两个波浪线包括起来</del><br><code>inline code,行内代码</code></p>
-<h3 id="3、引用"><a href="#3、引用" class="headerlink" title="3、引用"></a>3、引用</h3><p>当需要引用别人的观点或内容时，可以使用Markdown的引用语法，只需<code>&gt;空格</code>后面跟引用的文字就可以了。</p>
-<p>Markdown引用语法：</p>
-<pre class="line-numbers language-md"><code class="language-md">> 使用`大于号+空格`后面跟引用文字就可以使用引用了，`>`后面的空格不要忘记哦！<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>Markdown引用具体效果：</p>
-<blockquote>
-<p>使用<code>大于号+空格</code>后面跟引用文字就可以使用引用了，<code>&gt;</code>后面的空格不要忘记哦！</p>
-</blockquote>
-<h3 id="4、列表"><a href="#4、列表" class="headerlink" title="4、列表"></a>4、列表</h3><p>列表分为有序列表和无序列表，使用<code>+</code>、<code>-</code>、<code>*</code>都可以表示无序列表。使用<code>1.</code>、<code>2.</code>、<code>3.</code>等可以表示有序列表。所有的符号后面都需要添加一个空格。</p>
-<p>Markdown列表语法：</p>
-<pre class="line-numbers language-md"><code class="language-md">- 无序列表，减号与列表项内容之间有空格
-- 无序列表
-- 无序列表
-
-+ 无序列表，加号与列表项内容之间有空格
-+ 无序列表
-+ 无序列表
-
-* 无序列表，星号与列表项内容之间有空格
-* 无序列表
-* 无序列表
-
-1. 有序列表1，'1.'与列表项内容之间有空格
-2. 有序列表2
-3. 有序列表3<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>Markdown列表具体效果：</p>
-<ul>
-<li>无序列表，减号与列表项内容之间有空格</li>
-<li>无序列表</li>
-<li>无序列表</li>
-</ul>
-<ul>
-<li>无序列表，加号与列表项内容之间有空格</li>
-<li>无序列表</li>
-<li>无序列表</li>
-</ul>
-<ul>
-<li>无序列表，星号与列表项内容之间有空格</li>
-<li>无序列表</li>
-<li>无序列表</li>
-</ul>
-<ol>
-<li>有序列表1，’1.’与列表项内容之间有空格</li>
-<li>有序列表2</li>
-<li>有序列表3</li>
-</ol>
-<h3 id="5、链接"><a href="#5、链接" class="headerlink" title="5、链接"></a>5、链接</h3><p>Markdown中的链接效果类似<code>HTML</code>中的<a href="https://www.w3school.com.cn/tags/tag_a.asp" target="_blank" rel="noopener">&lt;a&gt;标签</a>，用来表示一个超链接。</p>
-<p>Markdown链接语法：</p>
-<pre class="line-numbers language-md"><code class="language-md">[超链接名称](超链接地址)
-[崔东欢的博客](http://cuidonghuan.top)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p>Markdown链接具体效果：<br><a href="http://cuidonghuan.top">崔东欢的博客</a></p>
-<h3 id="6、图片"><a href="#6、图片" class="headerlink" title="6、图片"></a>6、图片</h3><p>Markdown中的图片效果类似<code>HTML</code>中的<a href="https://www.w3school.com.cn/tags/tag_img.asp" target="_blank" rel="noopener">&lt;img&gt;标签</a>，用来表示一张图片。图片和链接在语法上的区别在于：图片语法中多了一个感叹号<code>！</code></p>
-<p>Markdown图片语法：</p>
-<pre class="line-numbers language-md"><code class="language-md">![图片名称](图片地址)
-![没错，不用再等了，我就是loading图片！](https://cdn.jsdelivr.net/gh/cuidonghuan/blog-image/img/202020200603094907.gif)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p>Markdown图片具体效果：<br><img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/cuidonghuan/blog-image/img/202020200603094907.gif" alt="没错，不用再等了，我就是loading图片！"></p>
-<h3 id="7、表格"><a href="#7、表格" class="headerlink" title="7、表格"></a>7、表格</h3><p>Markdown中的表格效果类似<code>HTML</code>中的<a href="https://www.w3school.com.cn/tags/tag_table.asp" target="_blank" rel="noopener">&lt;table&gt;标签</a>，用来表示一个表格。</p>
-<p>Markdown表格语法：</p>
-<pre class="line-numbers language-md"><code class="language-md">|表头|表头|表头|
-|-|:-:|-:|
-|左对齐|居中对齐|右对齐|
-
-说明：
-1.表格语法中'-' 至少要有一个，可以写多个，效果等同一个。
-2.表格中单元格内容默认左对齐，':-:'表示单元格内容居中对齐，'-:'表示单元格内容右对齐。
-3.表格语法中第一行表示表头内容，第二行用来设置单元格表头和内容对齐方式，其他为内容行。
-4.不同的写作工具和平台可能对Markdown语法的支持程度不同，例如Typora中可正常使用表格语法，而目前我使用的Hexo平台中表格单元格内容对齐无效，另外表格与上文内容之间要增加一个空行，否则表格不显示。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>Markdown表格具体效果<code>（Markdown源码中，本行与下面的表格语法之间要增加一个空行，否则表格无法正常显示）</code>：</p>
-<table>
-<thead>
-<tr>
-<th>表头</th>
-<th align="center">表头</th>
-<th align="right">表头</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>左对齐</td>
-<td align="center">居中对齐</td>
-<td align="right">右对齐</td>
-</tr>
-</tbody></table>
-<h3 id="8、代码块"><a href="#8、代码块" class="headerlink" title="8、代码块"></a>8、代码块</h3><p>作为程序员，写作内容中加点代码也是经常的事！这时候就是用到<code>代码块</code>的时候了！</p>
-<p>Markdown代码块语法：</p>
-<pre class="line-numbers language-md"><code class="language-md">​```语言名称
-这里面编写代码内容
-​```
-
-说明：
-使用三个反引号`，在两行反引号之间编写代码。另外可以在第一行反引号后面添加编程语言的名称来高亮代码内容。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>常见的语言名称见：<a href="https://prismjs.com/#supported-languages" target="_blank" rel="noopener">点我查看</a></p>
-<p>Markdown代码块具体效果：</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>code<span class="token punctuation">.</span>block<span class="token punctuation">;</span>
+<p>二分查找的算法思想，也即是它的查找过程描述如下：<br>每次取序列中间位置的元素与关键字比较，如果比关键字大，则从序列的前半部分继续查找；如果比关键字小，则从序列的后半部分查找，直到找到，或者序列中不包含该关键字。</p>
+<p>二分查找的时间复杂度：O(log2n)。<br>二分查找时间复杂度的计算：简单来说，二分查找的初始规模为n，每次的查找规模缩小一半，经过x次查找后，规模变成了1，这时可以得到等式：n*(1/2)^x = 1，变换之后得到：n = 2^x，也即是x = log2n，最终得到时间复杂度：O(log2n)。</p>
+<h1 id="二、二分查找基本实现"><a href="#二、二分查找基本实现" class="headerlink" title="二、二分查找基本实现"></a>二、二分查找基本实现</h1><p>基本的二分查找Java代码实现：</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>cc<span class="token punctuation">.</span>algorithm<span class="token punctuation">.</span>search<span class="token punctuation">;</span>
 
 <span class="token comment" spellcheck="true">/**
- * @description: 代码块
+ * @description: 二分查找
  * @author: cuidonghuan
- * @date: 2020/06/04 10:00
+ * @date: 2020/5/29 10:43
  */</span>
 
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">CodeBlock</span> <span class="token punctuation">{</span>
-    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"来段Java代码！"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">BinarySearch</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">/**
+     * 二分查找算法实现
+     *
+     * @param array 有序序列
+     * @param key   待查找关键字
+     * @return 待查找关键字在有序序列中的下标，关键字不在序列中时返回-1。
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">int</span> <span class="token function">binarySearch</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> array<span class="token punctuation">,</span> <span class="token keyword">int</span> key<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">// 待查找关键字在有序序列中的下标，默认为-1，表示关键字不在序列中</span>
+        <span class="token keyword">int</span> index <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">// 始终指向待查找序列的第一个元素的数组下标</span>
+        <span class="token keyword">int</span> front <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">// 始终指向待查找序列的最后一个元素的数组下标</span>
+        <span class="token keyword">int</span> rear <span class="token operator">=</span> array<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">// 待查找序列的中间元素的数组下标</span>
+        <span class="token keyword">int</span> mid<span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">// 循环结束条件：front > rear，表示整个序列已查找完毕！</span>
+        <span class="token keyword">while</span> <span class="token punctuation">(</span>front <span class="token operator">&lt;=</span> rear<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">// 计算中间元素的数组下标</span>
+            mid <span class="token operator">=</span> <span class="token punctuation">(</span>front <span class="token operator">+</span> rear<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>array<span class="token punctuation">[</span>mid<span class="token punctuation">]</span> <span class="token operator">></span> key<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token comment" spellcheck="true">// 在序列的前半部分查找</span>
+                rear <span class="token operator">=</span> mid <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>array<span class="token punctuation">[</span>mid<span class="token punctuation">]</span> <span class="token operator">&lt;</span> key<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token comment" spellcheck="true">// 在序列的后半部分查找</span>
+                front <span class="token operator">=</span> mid <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+                <span class="token comment" spellcheck="true">// 查找成功</span>
+                index <span class="token operator">=</span> mid<span class="token punctuation">;</span>
+                <span class="token keyword">break</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">return</span> index<span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="9-分割线"><a href="#9-分割线" class="headerlink" title="9.分割线"></a>9.分割线</h3><p>“华丽的分割线”，不需要再敲那么多<code>--------------------------------</code>了。</p>
-<p>Markdown分割线语法：</p>
-<pre class="line-numbers language-md"><code class="language-md">---
-***
-___
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>测试代码：</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>cc<span class="token punctuation">.</span>algorithm<span class="token punctuation">.</span>search<span class="token punctuation">;</span>
 
-说明：
-1.分割线语法只需要在单独的一行中连续输入三个减号/星号/下划线，即可出现一条分割线，将分割线上下的文章段落分开。
-2.三个减号或下划线生成的分割线类似，三个星号生成的分割线稍微不同，见下面的分割线效果。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>Markdown分割线具体效果：</p>
-<p><code>---</code>分割线：</p>
-<hr>
-<p><code>***</code>分割线：</p>
-<hr>
-<p><code>___</code>分割线：</p>
-<hr>
-<h2 id="四、Markdown进阶用法"><a href="#四、Markdown进阶用法" class="headerlink" title="四、Markdown进阶用法"></a>四、Markdown进阶用法</h2><blockquote>
-<p>学习完<code>三、Markdown基本语法</code>之后，已经可以愉快的写作了。和写代码一样，<strong>多写、多练、多总结</strong>，相信你很快就可以熟练的掌握Markdown的各类用法。</p>
-</blockquote>
-<p>由于各平台和工具对Markdown语法的支持情况不同，可能相同的写法在不同的平台中显示效果是不同，这个只能多写多用，逐渐掌握各平台的用法，不过最基本的语法都是通用的。</p>
-<p>下面介绍一些Markdown的进阶用法，基础语法可能有时候无法完美的表达我们的需求，可以通过下面的方法来尽可能达到我们的要求。</p>
-<h3 id="1-引用的嵌套"><a href="#1-引用的嵌套" class="headerlink" title="1.引用的嵌套"></a>1.引用的嵌套</h3><p>有时候可能需要用到引用的引用，可用通过引用的嵌套来实现。</p>
-<pre class="line-numbers language-md"><code class="language-md">> 这段是对内容2的引用，应用3。
-> > 这段是对内容1的引用，内容2。
-> > > 这段是原始的内容，内容1。
+<span class="token comment" spellcheck="true">/**
+ * @description: 二分查找测试类
+ * @author: cuidonghuan
+ * @date: 2020/5/29 10:45
+ */</span>
 
-说明：
-1.引用的嵌套，最下面的内容是原始的引用内容。可以通过这种方式实现多层的嵌套。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>引用的嵌套具体效果：</p>
-<blockquote>
-<p>这段是对内容2的引用，应用3。</p>
-<blockquote>
-<p>这段是对内容1的引用，内容2。</p>
-<blockquote>
-<p>这段是原始的内容，内容1。</p>
-</blockquote>
-</blockquote>
-</blockquote>
-<h3 id="2-图片的另一种写法"><a href="#2-图片的另一种写法" class="headerlink" title="2.图片的另一种写法"></a>2.图片的另一种写法</h3><p>有时候可能需要对图片的展示大小做限制，我们可以通过<code>内嵌HTML标签</code>的方式来实现这种需求。</p>
-<p>使用内嵌HTML标签的写法（图片缩小50%显示）：</p>
-<pre class="line-numbers language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>https://cdn.jsdelivr.net/gh/cuidonghuan/blog-image/img/202020200603094907.gif<span class="token punctuation">"</span></span> <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>使用内嵌HTML标签的写法（图片缩小50%显示）<span class="token punctuation">"</span></span><span class="token style-attr language-css"><span class="token attr-name"> <span class="token attr-name">style</span></span><span class="token punctuation">="</span><span class="token attr-value"><span class="token property">zoom</span><span class="token punctuation">:</span><span class="token number">50%</span><span class="token punctuation">;</span></span><span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>标准的Markdown图片语法：</p>
-<p><img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/cuidonghuan/blog-image/img/202020200603094907.gif" alt="标准的Markdown图片语法"></p>
-<p>使用内嵌HTML标签的写法（图片缩小50%显示）：</p>
-<img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/cuidonghuan/blog-image/img/202020200603094907.gif" alt="使用内嵌HTML标签的写法（图片缩小50%显示）" style="zoom:50%;">
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Main</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">// 测试数据</span>
+        <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> sample <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">,</span> <span class="token number">11</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">// 需要查找的关键字</span>
+        <span class="token keyword">int</span> key <span class="token operator">=</span> <span class="token number">9</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">// 使用二分查找算法查找关键字</span>
+        <span class="token keyword">int</span> index <span class="token operator">=</span> BinarySearch<span class="token punctuation">.</span><span class="token function">binarySearch</span><span class="token punctuation">(</span>sample<span class="token punctuation">,</span> key<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"有序序列中关键字所在的数组下标："</span> <span class="token operator">+</span> index<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>测试结果：</p>
+<pre class="line-numbers language-bash"><code class="language-bash">有序序列中关键字所在的数组下标：4
 
-<h3 id="3-表格样式的定制"><a href="#3-表格样式的定制" class="headerlink" title="3.表格样式的定制"></a>3.表格样式的定制</h3><p>标准的Markdown表格语法只能简单的编辑表格内容，对于单元格字体大小、颜色等都无法设置。同样的我们可以使用<code>HTML标签</code>来实现这些定制需求。</p>
-<p>使用<code>HTML标签</code>来定制表格样式：</p>
-<pre class="line-numbers language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span><span class="token punctuation">></span></span><span class="token style language-css">
-<span class="token selector"><span class="token class">.customTable</span> table </span><span class="token punctuation">{</span>
-    <span class="token property">margin</span><span class="token punctuation">:</span> auto<span class="token punctuation">;</span>
-    <span class="token property">border</span><span class="token punctuation">:</span> <span class="token number">1</span>px solid red<span class="token punctuation">;</span>
-    <span class="token property">color</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>customTable<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-
-|表头|表头|表头|
-|-|:-:|-:|
-|左对齐|居中对齐|右对齐|
-
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>使用<code>HTML标签</code>来定制表格样式的具体效果：</p>
-<style>
-.customTable table {
-    margin: auto;
-    border: 1px solid red;
-    color: red;
-}
-</style>
-<div class="customTable">
-
-<table>
-<thead>
-<tr>
-<th>表头</th>
-<th align="center">表头</th>
-<th align="right">表头</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>左对齐</td>
-<td align="center">居中对齐</td>
-<td align="right">右对齐</td>
-</tr>
-</tbody></table>
-</div>
-
-<h2 id="五、总结"><a href="#五、总结" class="headerlink" title="五、总结"></a>五、总结</h2><ol>
-<li>“功欲善其事必先利其器”，选择<code>Typora</code>工具可以大大提升写作效率。</li>
-<li><strong>多写、多练、多总结</strong>，你才能更快的熟练掌握这门写作技能。</li>
-<li>通过<code>内嵌HTML标签</code>的方式可以实现更加复杂的排版功能。</li>
-</ol>
+Process finished with <span class="token keyword">exit</span> code 0<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h1 id="三、总结"><a href="#三、总结" class="headerlink" title="三、总结"></a>三、总结</h1><p>本文简单介绍了二分查找的基本算法思路，及Java代码实现。网上存在许多有关二分查找的学习资料，我还需要不断的学习完善。<br>这里推荐一篇博客，对于二分查找介绍的比较详细：<a href="https://www.cnblogs.com/kyoner/p/11080078.html" target="_blank" rel="noopener">详解二分查找算法</a></p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -757,7 +586,7 @@ ___
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://cuidonghuan.top/2020/06024647/">http://cuidonghuan.top/2020/06024647/</a>
+                    <a href="http://cuidonghuan.top/2020/060442877/">http://cuidonghuan.top/2020/060442877/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -795,8 +624,8 @@ ___
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Markdown/">
-                                    <span class="chip bg-color">Markdown</span>
+                                <a href="/tags/BinarySearch/">
+                                    <span class="chip bg-color">BinarySearch</span>
                                 </a>
                             
                         </div>
@@ -841,7 +670,7 @@ ___
         repo: 'cuidonghuan.github.io',
         owner: 'cuidonghuan',
         admin: "cuidonghuan",
-        id: '2020-06-02T09-42-53',
+        id: '2020-06-04T15-31-13',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -865,9 +694,10 @@ ___
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2020/060442877/">
                     <div class="card-image">
@@ -885,9 +715,9 @@ ___
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-06-04
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-06-04
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -900,6 +730,7 @@ ___
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -918,32 +749,31 @@ ___
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/092015257/">
+                <a href="/2020/06024647/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/cuidonghuan/cuidonghuan.github.io/medias/featureimages/6.jpg" class="responsive-img" alt="离线安装glibc-2.17">
+                        <img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/cuidonghuan/cuidonghuan.github.io/medias/featureimages/15.jpg" class="responsive-img" alt="Markdown基本语法">
                         
-                        <span class="card-title">离线安装glibc-2.17</span>
+                        <span class="card-title">Markdown基本语法</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            前言：  
-在安装redis5.0时，提示缺少：libc.so.6: version GLIBC_2.17 not found，经过一番查看，发现Linux系统自带的GLIBC版本较低，需要升级到2.17版本。本文演示了升级到GLIBC_2
+                            本文介绍了Markdown的基本语法及用法。
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-09-20
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-06-02
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E7%B3%BB%E7%BB%9F%E8%BF%90%E7%BB%B4/" class="post-category">
-                                    系统运维
+                            <a href="/categories/%E5%86%99%E4%BD%9C/" class="post-category">
+                                    写作
                                 </a>
                             
                             
@@ -953,8 +783,8 @@ ___
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/glibc/">
-                        <span class="chip bg-color">glibc</span>
+                    <a href="/tags/Markdown/">
+                        <span class="chip bg-color">Markdown</span>
                     </a>
                     
                 </div>
